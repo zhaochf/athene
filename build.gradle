@@ -17,7 +17,7 @@ configure(allprojects) { project ->
 	ext.druidVersion			= "1.0.28"
 	ext.guavaVersion			= "21.0"
 	ext.hamcrestVersion			= "1.3"
-	ext.hibernateVersion		= "5.2.7.Final"
+	ext.hibernateVersion		= "5.2.8.Final"
 	ext.junitVersion           	= "4.12"
 	ext.logbackVersion			= "1.2.1"
 	ext.mysqlVersion			= "6.0.5"
@@ -90,6 +90,7 @@ configure(subprojects) { subprojects ->
 			}
 			dependency("com.alibaba:druid:${druidVersion}")
 			dependency("com.google.guava:guava:${guavaVersion}")
+			dependency("org.hibernate:hibernate-core:${hibernateVersion}")
 			dependency("org.hibernate:hibernate-entitymanager:${hibernateVersion}")
 			dependency("org.slf4j:slf4j-api:${slf4jVersion}")
 			dependency("mysql:mysql-connector-java:${mysqlVersion}")
@@ -121,6 +122,12 @@ configure(subprojects) { subprojects ->
 	}
 }
 
+project("athene-data-domain") {
+	dependencies {
+		compile("org.hibernate:hibernate-core")
+	}
+}
+
 project("athene-data") {
 	dependencies {
 		compile(project(":athene-data-domain"))
@@ -135,6 +142,12 @@ project("athene-data") {
 project("athene-logger") {
 	dependencies {
 		compile ("com.zeroc:ice:3.6.3")
+	}
+}
+
+project("athene-admin-api") {
+	dependencies {
+		compile(project(":athene-data-domain"))
 	}
 }
 

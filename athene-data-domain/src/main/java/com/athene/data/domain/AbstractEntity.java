@@ -9,6 +9,7 @@ import java.io.Serializable;
  * @author zhaochf
  *
  */
+@javax.persistence.Entity
 public abstract class AbstractEntity implements Entity {
 
 	/**
