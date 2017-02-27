@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.athene.admin.system.domain;
+package com.athene.security.domain;
 
 import java.time.LocalDate;
 import java.time.ZonedDateTime;

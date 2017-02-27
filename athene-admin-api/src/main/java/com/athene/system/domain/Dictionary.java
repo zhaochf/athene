@@ -1,12 +1,13 @@
 /**
  * 
  */
-package com.athene.admin.system.domain;
+package com.athene.system.domain;
 
 import java.time.ZonedDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.athene.data.domain.AbstractEntity;
@@ -19,6 +20,7 @@ import com.athene.data.domain.AbstractEntity;
 @Table(name = "T_SYSTEM_DICTIONARY")
 public class Dictionary extends AbstractEntity {
 
+	@Id
 	@Column(name="ID")
 	private String id;
 	

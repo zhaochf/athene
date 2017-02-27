@@ -127,6 +127,7 @@ configure(subprojects) { subprojects ->
 project("athene-data-domain") {
 	dependencies {
 		compile("org.hibernate:hibernate-core")
+		compile("org.springframework.data:spring-data-commons")
 	}
 }
 
@@ -159,6 +160,13 @@ project("athene-logger") {
 project("athene-admin-api") {
 	dependencies {
 		compile(project(":athene-data-domain"))
+	}
+}
+
+project("athene-admin-provider") {
+	dependencies {
+		compile(project(":athene-data"))
+		compile(project(":athene-admin-api"))
 	}
 }
 

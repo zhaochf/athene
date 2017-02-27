@@ -6,3 +6,4 @@ include "athene-data-tools"
 include "athene-logger"
 
 include "athene-admin-api"
+include "athene-admin-provider"
