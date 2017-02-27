@@ -5,4 +5,4 @@
  * @author zhaochf
  *
  */
-package com.athene.admin.domain;
+package com.athene.data.domain;

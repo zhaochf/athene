@@ -24,6 +24,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.athene.data.jpa.repository.support.JpaRepositoryFactoryBean;
+import com.mysql.jdbc.Driver;
 
 /**
  * @author zhaochf
