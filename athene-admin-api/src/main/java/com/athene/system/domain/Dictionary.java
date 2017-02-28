@@ -45,6 +45,13 @@ public class Dictionary extends AbstractEntity {
 	@Column(name="LAST_MODIFIED_DATE")
 	private ZonedDateTime lastModifiedDate;
 	
+	/**
+	 * @param id
+	 */
+	public Dictionary(String id) {
+		this.id = id;
+	}
+
 	/* (non-Javadoc)
 	 * @see com.athene.data.domain.AbstractEntity#getId()
 	 */

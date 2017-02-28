@@ -5,6 +5,8 @@ package com.athene.security.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.athene.security.domain.User;
 
@@ -15,6 +17,7 @@ import com.athene.security.domain.User;
  * @author zhaochf
  *
  */
+@Service
 public interface UserService {
 
 	/**
@@ -22,16 +25,18 @@ public interface UserService {
 	 * 
 	 * @param user
 	 */
+	@Transactional
 	public void saveUser(User user);
 	
 	/**
-	 * Delete users with user ids
-	 * @param userids
+	 * Delete users  by user ids
+	 * @param userIds
 	 */
-	public void deleteUsers(String... userids);
+	@Transactional
+	public void deleteUsers(String... userIds);
 	
 	/**
-	 * Get user with user id
+	 * Get user  by user id
 	 * 
 	 * @param userId
 	 * @return
@@ -40,11 +45,11 @@ public interface UserService {
 	
 	
 	/**
-	 * Get users with key for page
+	 * Get users  by query key for page
 	 * 
-	 * @param key
+	 * @param queryKey
 	 * @param pageable
 	 * @return
 	 */
-	public Page<User> getUsers(String key, Pageable pageable);
+	public Page<User> getUsers(String queryKey, Pageable pageable);
 }

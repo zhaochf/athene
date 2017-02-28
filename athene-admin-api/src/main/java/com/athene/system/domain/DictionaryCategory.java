@@ -65,7 +65,13 @@ public class DictionaryCategory extends AbstractEntity {
 	@Column(name = "LAST_MODIFIED_DATE")
 	private ZonedDateTime lastModifiedDate;
 
-	
+	/**
+	 * @param id
+	 */
+	public DictionaryCategory(String id) {
+		this.id = id;
+	}
+
 
 	/* (non-Javadoc)
 	 * @see com.athene.data.domain.AbstractEntity#getId()

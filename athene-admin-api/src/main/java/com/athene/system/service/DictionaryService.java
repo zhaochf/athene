@@ -3,10 +3,10 @@
  */
 package com.athene.system.service;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.athene.system.domain.Dictionary;
 import com.athene.system.domain.DictionaryCategory;
@@ -17,13 +17,15 @@ import com.athene.system.domain.DictionaryCategory;
  * @author zhaochf
  *
  */
+@Service
 public interface DictionaryService {
-
+	
 	/**
 	 * Save dictionary
 	 * 
 	 * @param dictionary
 	 */
+	@Transactional
 	public void saveDictionary(Dictionary dictionary);
 	
 	/**
@@ -31,23 +33,27 @@ public interface DictionaryService {
 	 * 
 	 * @param dictionaryIds
 	 */
+	@Transactional
 	public void deleteDictionaries(String... dictionaryIds);
 	
 	
 	/**
-	 * Delete dictionaries for category id
+	 * Delete dictionaries by category id
 	 * 
 	 * @param categoryId
 	 */
+	@Transactional
 	public void deleteDictionaries(String categoryId);
 	
 	/**
-	 * Get dictionaries for category id
+	 * Get dictionaries by category id
 	 * 
 	 * @param categoryId
+	 * @param pageable
+	 * 
 	 * @return
 	 */
-	public Page<Dictionary> getDictionaries(String categoryId);
+	public Page<Dictionary> getDictionaries(String categoryId, Pageable pageable);
 	
 
 	/**
@@ -55,6 +61,7 @@ public interface DictionaryService {
 	 * 
 	 * @param category
 	 */
+	@Transactional
 	public void saveCategory(DictionaryCategory category);
 	
 	/**
@@ -62,7 +69,8 @@ public interface DictionaryService {
 	 * 
 	 * @param categoryId
 	 */
-	public void deleteCategory(String... categoryId);
+	@Transactional
+	public void deleteCategory(String... categoryIds);
 	
 	/**
 	 * Get dictionary category
@@ -74,12 +82,12 @@ public interface DictionaryService {
 	
 	
 	/**
-	 * Get dictionary categories for parent id
+	 * Get dictionary categories by parent id
 	 * 
 	 * @param parentId
 	 * @param pageable
 	 * @return
 	 */
-	public List<DictionaryCategory> getCategorys(String parentId, Pageable pageable);
+	public Page<DictionaryCategory> getCategorys(String parentId, Pageable pageable);
 	
 }

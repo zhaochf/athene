@@ -73,6 +73,13 @@ public class User extends AbstractEntity {
 	
 	@Column(name="LAST_MODIFIED_DATE")
 	private ZonedDateTime lastModifiedDate;
+	
+	/**
+	 * @param id
+	 */
+	public User(String id) {
+		this.id = id;
+	}
 
 	/**
 	 * @return the id

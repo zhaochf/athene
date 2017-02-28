@@ -160,6 +160,8 @@ project("athene-logger") {
 project("athene-admin-api") {
 	dependencies {
 		compile(project(":athene-data-domain"))
+		compile("org.springframework:spring-context")
+		compile("org.springframework:spring-tx")
 	}
 }
 
