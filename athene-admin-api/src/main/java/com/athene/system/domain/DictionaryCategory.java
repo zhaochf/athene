@@ -65,6 +65,15 @@ public class DictionaryCategory extends AbstractEntity {
 	@Column(name = "LAST_MODIFIED_DATE")
 	private ZonedDateTime lastModifiedDate;
 
+	
+	
+	/**
+	 * 
+	 */
+	public DictionaryCategory() {
+		super();
+	}
+
 	/**
 	 * @param id
 	 */

@@ -13,18 +13,18 @@ import org.springframework.data.repository.query.QueryMethod;
 import org.springframework.data.repository.query.RepositoryQuery;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 
-import com.athene.data.jpa.repository.query.NativeJpaQuery;
+import com.athene.data.jpa.repository.query.ExtensionNativeJpaQuery;
 
 /**
  * @author zhaochf
  *
  */
-public enum JpaQueryFactory {
+public enum ExtensionJpaQueryFactory {
 
 	INSTANCE;
 	
 	private static final SpelExpressionParser PARSER = new SpelExpressionParser();
-	private static final Logger LOGGER = LoggerFactory.getLogger(JpaQueryFactory.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ExtensionJpaQueryFactory.class);
 	
 	/**
 	 * Creates a {@link RepositoryQuery} from the given {@link QueryMethod} that is potentially annotated with
@@ -59,7 +59,7 @@ public enum JpaQueryFactory {
 			return null;
 		}
 
-		return method.isNativeQuery() ? new NativeJpaQuery(method, em, queryString, evaluationContextProvider, PARSER)
+		return method.isNativeQuery() ? new ExtensionNativeJpaQuery(method, em, queryString, evaluationContextProvider, PARSER)
 				: new SimpleJpaQuery(method, em, queryString, evaluationContextProvider, PARSER);
 	}
 	

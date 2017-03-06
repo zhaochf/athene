@@ -3,3 +3,6 @@
 /.settings/
 /.classpath
 /.project
+/build/
+/athene.log
+/athene-2017-03-02.0.log

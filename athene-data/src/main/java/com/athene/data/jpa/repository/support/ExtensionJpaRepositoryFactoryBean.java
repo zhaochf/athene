@@ -15,10 +15,10 @@ import org.springframework.data.repository.core.support.RepositoryFactorySupport
  * @author zhaochf
  *
  */
-public class JpaRepositoryFactoryBean <T extends Repository<S, ID>, S, ID extends Serializable>
+public class ExtensionJpaRepositoryFactoryBean <T extends Repository<S, ID>, S, ID extends Serializable>
 		extends org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean<T, S, ID> {
 
-	public JpaRepositoryFactoryBean(Class<? extends T> repositoryInterface) {
+	public ExtensionJpaRepositoryFactoryBean(Class<? extends T> repositoryInterface) {
 		super(repositoryInterface);
 	}
 
@@ -27,7 +27,7 @@ public class JpaRepositoryFactoryBean <T extends Repository<S, ID>, S, ID extend
 	 */
 	@Override
 	protected RepositoryFactorySupport createRepositoryFactory(EntityManager entityManager) {
-		return new JpaRepositoryFactory(entityManager);
+		return new ExtensionJpaRepositoryFactory(entityManager);
 	}
 	
 }

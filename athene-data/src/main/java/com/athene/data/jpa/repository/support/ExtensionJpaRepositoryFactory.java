@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 
 import org.springframework.data.jpa.provider.PersistenceProvider;
 import org.springframework.data.jpa.provider.QueryExtractor;
-import org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy;
+import org.springframework.data.jpa.repository.query.ExtensionJpaQueryLookupStrategy;
 import org.springframework.data.repository.query.EvaluationContextProvider;
 import org.springframework.data.repository.query.QueryLookupStrategy;
 import org.springframework.data.repository.query.QueryLookupStrategy.Key;
@@ -16,12 +16,12 @@ import org.springframework.data.repository.query.QueryLookupStrategy.Key;
  * @author zhaochf
  *
  */
-public class JpaRepositoryFactory extends org.springframework.data.jpa.repository.support.JpaRepositoryFactory {
+public class ExtensionJpaRepositoryFactory extends org.springframework.data.jpa.repository.support.JpaRepositoryFactory {
 
 	private final EntityManager entityManager;
 	private final QueryExtractor extractor;
 	
-	public JpaRepositoryFactory(EntityManager entityManager) {
+	public ExtensionJpaRepositoryFactory(EntityManager entityManager) {
 		super(entityManager);
 		this.entityManager = entityManager;
 		this.extractor = PersistenceProvider.fromEntityManager(entityManager);
@@ -32,6 +32,6 @@ public class JpaRepositoryFactory extends org.springframework.data.jpa.repositor
 	 */
 	@Override
 	protected QueryLookupStrategy getQueryLookupStrategy(Key key, EvaluationContextProvider evaluationContextProvider) {
-		return JpaQueryLookupStrategy.create(entityManager, key, extractor, evaluationContextProvider);
+		return ExtensionJpaQueryLookupStrategy.create(entityManager, key, extractor, evaluationContextProvider);
 	}
 }

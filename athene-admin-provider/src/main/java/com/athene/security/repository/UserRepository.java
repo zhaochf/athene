@@ -23,6 +23,6 @@ public interface UserRepository extends JpaRepository<User, String> {
 	 * @param pageable
 	 * @return
 	 */
-	@Query("select u from User where u.username like %:queryKey% or u.firstName like %:queryKey% or u.lastName like %:queryKey% or u.mobilePhone like %:queryKey% or u.email like %:queryKey%")
+	@Query("select u from User u where u.username like %:queryKey% or u.firstName like %:queryKey% or u.lastName like %:queryKey% or u.mobilePhone like %:queryKey% or u.email like %:queryKey%")
 	public Page<User> findByQueryKey(@Param("queryKey") String queryKey, Pageable pageable);
 }

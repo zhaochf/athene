@@ -20,9 +20,9 @@ import org.springframework.expression.spel.standard.SpelExpressionParser;
  * @author zhaochf
  *
  */
-public final class NativeJpaQuery extends AbstractStringBasedJpaQueryBridge {
+public final class ExtensionNativeJpaQuery extends AbstractStringBasedJpaQueryBridge {
 
-	public NativeJpaQuery(JpaQueryMethod method, EntityManager em, String queryString,
+	public ExtensionNativeJpaQuery(JpaQueryMethod method, EntityManager em, String queryString,
 			EvaluationContextProvider evaluationContextProvider, SpelExpressionParser parser) {
 		super(method, em, queryString, evaluationContextProvider, parser);
 	}

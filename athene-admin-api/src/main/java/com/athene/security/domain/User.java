@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.ZonedDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -21,6 +22,7 @@ import com.athene.data.domain.AbstractEntity;
  * @author zhaochf
  *
  */
+@Entity
 @Table(name="T_SYSTEM_USER")
 public class User extends AbstractEntity {
 	
@@ -74,6 +76,14 @@ public class User extends AbstractEntity {
 	@Column(name="LAST_MODIFIED_DATE")
 	private ZonedDateTime lastModifiedDate;
 	
+	
+	/**
+	 * 
+	 */
+	public User() {
+		super();
+	}
+
 	/**
 	 * @param id
 	 */

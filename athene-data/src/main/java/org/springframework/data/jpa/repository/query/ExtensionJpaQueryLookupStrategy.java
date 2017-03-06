@@ -26,12 +26,12 @@ import org.springframework.util.Assert;
  * @author zhaochf
  *
  */
-public final class JpaQueryLookupStrategy {
+public final class ExtensionJpaQueryLookupStrategy {
 
 	/**
 	 * Private constructor to prevent instantiation.
 	 */
-	private JpaQueryLookupStrategy() {}
+	private ExtensionJpaQueryLookupStrategy() {}
 	
 	/**
 	 * Base class for {@link QueryLookupStrategy} implementations that need access to an {@link EntityManager}.
@@ -131,13 +131,13 @@ public final class JpaQueryLookupStrategy {
 		@Override
 		protected RepositoryQuery resolveQuery(JpaQueryMethod method, EntityManager em, NamedQueries namedQueries) {
 
-			RepositoryQuery query = JpaQueryFactory.INSTANCE.fromQueryAnnotation(method, em, evaluationContextProvider);
+			RepositoryQuery query = ExtensionJpaQueryFactory.INSTANCE.fromQueryAnnotation(method, em, evaluationContextProvider);
 
 			if (null != query) {
 				return query;
 			}
 
-			query = JpaQueryFactory.INSTANCE.fromProcedureAnnotation(method, em);
+			query = ExtensionJpaQueryFactory.INSTANCE.fromProcedureAnnotation(method, em);
 
 			if (null != query) {
 				return query;
@@ -145,7 +145,7 @@ public final class JpaQueryLookupStrategy {
 
 			String name = method.getNamedQueryName();
 			if (namedQueries.hasQuery(name)) {
-				return JpaQueryFactory.INSTANCE.fromMethodWithQueryString(method, em, namedQueries.getQuery(name),
+				return ExtensionJpaQueryFactory.INSTANCE.fromMethodWithQueryString(method, em, namedQueries.getQuery(name),
 						evaluationContextProvider);
 			}
 

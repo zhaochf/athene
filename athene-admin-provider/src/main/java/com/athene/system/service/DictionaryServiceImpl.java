@@ -11,6 +11,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.athene.system.domain.Dictionary;
 import com.athene.system.domain.DictionaryCategory;
@@ -21,6 +22,7 @@ import com.athene.system.repository.DictionaryRepository;
  * @author zhaochf
  *
  */
+@Service
 public class DictionaryServiceImpl implements DictionaryService {
 	
 	@Autowired
