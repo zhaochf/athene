@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.athene.data.jpa.repository.support;
+package org.springframework.data.jpa.repository.support;
 
 import java.io.Serializable;
 

@@ -35,10 +35,11 @@ public class DictionaryServiceImpl implements DictionaryService {
 	 * @see com.athene.system.service.DictionaryService#saveDictionary(com.athene.system.domain.Dictionary)
 	 */
 	@Override
-	public void saveDictionary(Dictionary dictionary) {
-		Optional.of(dictionary).ifPresent((entity) -> {
-			dictionaryRepository.save(entity);
-		});
+	public Dictionary saveDictionary(Dictionary dictionary) {
+		if (Optional.of(dictionary).isPresent()) {
+			return dictionaryRepository.save(dictionary);
+		}
+		return null;
 	}
 
 	/* (non-Javadoc)
@@ -80,26 +81,41 @@ public class DictionaryServiceImpl implements DictionaryService {
 	 * @see com.athene.system.service.DictionaryService#saveCategory(com.athene.system.domain.DictionaryCategory)
 	 */
 	@Override
-	public void saveCategory(DictionaryCategory category) {
-		Optional.of(category).ifPresent((entity) -> {
-			categoryRepository.save(entity);
-		});
+	public DictionaryCategory saveCategory(DictionaryCategory category) {
+		if (Optional.of(category).isPresent()) {
+			return categoryRepository.save(category);
+		}
+			
+		return null;
 	}
 
 	/* (non-Javadoc)
-	 * @see com.athene.system.service.DictionaryService#deleteCategory(java.lang.String[])
+	 * @see com.athene.system.service.DictionaryService#insertCategory(com.athene.system.domain.DictionaryCategory)
 	 */
 	@Override
-	public void deleteCategory(String... categoryIds) {
-		Optional.of(categoryIds).ifPresent((ids) -> {
-			List<DictionaryCategory> dictionaries = Collections.synchronizedList(Collections.emptyList());
-			Arrays.asList(ids).forEach((id) -> {
-				dictionaries.add(new DictionaryCategory(id));
-				dictionaryRepository.deleteByCategoryId(id);
-			});
-			categoryRepository.deleteInBatch(dictionaries);
-		});
+	public DictionaryCategory insertCategory(DictionaryCategory category) {
 		
+		if (Optional.of(category).isPresent()) {
+			return categoryRepository.insertNode(category);
+		}
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.athene.system.service.DictionaryService#deleteCategory(java.lang.String)
+	 */
+	@Override
+	public void deleteCategory(String categoryId) {
+		
+		if (Optional.of(categoryId).isPresent()) {
+			List<DictionaryCategory> categories = categoryRepository.findAllChildren(categoryId);
+			Optional.of(categories).ifPresent(entities -> {
+				entities.stream().peek(entity -> {
+					dictionaryRepository.deleteByCategoryId(entity.getId());
+				});
+			});
+			categoryRepository.deleteNode(categoryId);
+		}
 	}
 
 	/* (non-Javadoc)
@@ -114,15 +130,29 @@ public class DictionaryServiceImpl implements DictionaryService {
 		return null;
 	}
 
+	
+
 	/* (non-Javadoc)
-	 * @see com.athene.system.service.DictionaryService#getCategorys(java.lang.String, org.springframework.data.domain.Pageable)
+	 * @see com.athene.system.service.DictionaryService#getCategoryChildren(java.lang.String)
 	 */
 	@Override
-	public Page<DictionaryCategory> getCategorys(String parentId, Pageable pageable) {
-		if (Optional.of(parentId).isPresent()) {
-			return categoryRepository.findByParentId(parentId, pageable);
+	public List<DictionaryCategory> getCategoryChildren(String categoryId) {
+		if (Optional.of(categoryId).isPresent()) {
+			return categoryRepository.findChildren(categoryId);
 		}
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.athene.system.service.DictionaryService#getCategoryAllChildren(java.lang.String)
+	 */
+	@Override
+	public List<DictionaryCategory> getCategoryAllChildren(String categoryId) {
+		if (Optional.of(categoryId).isPresent()) {
+			return categoryRepository.findAllChildren(categoryId);
+		}
+		return null;
+	}
+
+	
 }

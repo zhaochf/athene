@@ -13,8 +13,6 @@ import org.springframework.data.repository.query.QueryMethod;
 import org.springframework.data.repository.query.RepositoryQuery;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 
-import com.athene.data.jpa.repository.query.ExtensionNativeJpaQuery;
-
 /**
  * @author zhaochf
  *

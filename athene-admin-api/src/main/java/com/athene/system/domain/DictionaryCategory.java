@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.athene.data.domain.AbstractEntity;
+import com.athene.data.domain.TreeEntity;
 
 /**
  * @author zhaochf
@@ -18,37 +18,14 @@ import com.athene.data.domain.AbstractEntity;
  */
 @Entity
 @Table(name = "T_SYSTEM_DICTIONARY_CATEGORY")
-public class DictionaryCategory extends AbstractEntity {
+public class DictionaryCategory extends TreeEntity {
 	
-	/**
-	 * Defined root id is '#' 
-	 */
-	public static final String ROOT_ID = "#";
-
 	@Id
 	@Column(name = "ID")
 	private String id;
 	
-	@Column(name = "PARENT_ID")
-	private String parentId;
-	
 	@Column(name = "NAME")
 	private String name;
-
-	@Column(name = "LEFT_LIMIT")
-	private Integer leftLimit;
-	
-	@Column(name = "RIGHT_LIMIT")
-	private Integer rightLimit;
-	
-	@Column(name = "LEVEL")
-	private Integer level;
-	
-	@Column(name = "IS_LEAF")
-	private Boolean isLeaf;
-	
-	@Column(name = "ORDER_NUMBER")
-	private Integer orderNumber;
 	
 	@Column(name = "DESCRIPTION")
 	private String description;
@@ -65,7 +42,6 @@ public class DictionaryCategory extends AbstractEntity {
 	@Column(name = "LAST_MODIFIED_DATE")
 	private ZonedDateTime lastModifiedDate;
 
-	
 	
 	/**
 	 * 
@@ -98,102 +74,6 @@ public class DictionaryCategory extends AbstractEntity {
 		this.id = id;
 	}
 	
-
-	/**
-	 * @return the parentId
-	 */
-	public String getParentId() {
-		return parentId;
-	}
-
-
-	/**
-	 * @param parentId the parentId to set
-	 */
-	public void setParentId(String parentId) {
-		this.parentId = parentId;
-	}
-
-
-	/**
-	 * @return the leftLimit
-	 */
-	public Integer getLeftLimit() {
-		return leftLimit;
-	}
-
-
-	/**
-	 * @param leftLimit the leftLimit to set
-	 */
-	public void setLeftLimit(Integer leftLimit) {
-		this.leftLimit = leftLimit;
-	}
-
-
-	/**
-	 * @return the rightLimit
-	 */
-	public Integer getRightLimit() {
-		return rightLimit;
-	}
-
-
-	/**
-	 * @param rightLimit the rightLimit to set
-	 */
-	public void setRightLimit(Integer rightLimit) {
-		this.rightLimit = rightLimit;
-	}
-
-
-	/**
-	 * @return the level
-	 */
-	public Integer getLevel() {
-		return level;
-	}
-
-
-	/**
-	 * @param level the level to set
-	 */
-	public void setLevel(Integer level) {
-		this.level = level;
-	}
-
-
-	/**
-	 * @return the isLeaf
-	 */
-	public Boolean getIsLeaf() {
-		return isLeaf;
-	}
-
-
-	/**
-	 * @param isLeaf the isLeaf to set
-	 */
-	public void setIsLeaf(Boolean isLeaf) {
-		this.isLeaf = isLeaf;
-	}
-
-
-	/**
-	 * @return the orderNumber
-	 */
-	public Integer getOrderNumber() {
-		return orderNumber;
-	}
-
-
-	/**
-	 * @param orderNumber the orderNumber to set
-	 */
-	public void setOrderNumber(Integer orderNumber) {
-		this.orderNumber = orderNumber;
-	}
-
 
 	/**
 	 * @return the name

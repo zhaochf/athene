@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.athene.data.jpa.repository.query;
+package org.springframework.data.jpa.repository.query;
 
 import java.util.Map;
 
@@ -10,7 +10,6 @@ import javax.persistence.Query;
 
 import org.hibernate.query.NativeQuery;
 import org.hibernate.transform.Transformers;
-import org.springframework.data.jpa.repository.query.AbstractStringBasedJpaQueryBridge;
 import org.springframework.data.jpa.repository.query.JpaQueryMethod;
 import org.springframework.data.repository.query.EvaluationContextProvider;
 import org.springframework.expression.spel.standard.SpelExpressionParser;

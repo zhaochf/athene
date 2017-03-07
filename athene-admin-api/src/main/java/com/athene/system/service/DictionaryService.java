@@ -3,6 +3,8 @@
  */
 package com.athene.system.service;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -24,9 +26,10 @@ public interface DictionaryService {
 	 * Save dictionary
 	 * 
 	 * @param dictionary
+	 * @return
 	 */
 	@Transactional
-	public void saveDictionary(Dictionary dictionary);
+	public Dictionary saveDictionary(Dictionary dictionary);
 	
 	/**
 	 * Delete dictionaries
@@ -55,14 +58,23 @@ public interface DictionaryService {
 	 */
 	public Page<Dictionary> getDictionaries(String categoryId, Pageable pageable);
 	
-
 	/**
 	 * Save dictionary category
 	 * 
 	 * @param category
+	 * @return
 	 */
 	@Transactional
-	public void saveCategory(DictionaryCategory category);
+	public DictionaryCategory saveCategory(DictionaryCategory category);
+	
+	/**
+	 * Insert dictionary category
+	 * 
+	 * @param category
+	 * @return
+	 */
+	@Transactional
+	public DictionaryCategory insertCategory(DictionaryCategory category);
 	
 	/**
 	 * Delete dictionary category
@@ -70,7 +82,7 @@ public interface DictionaryService {
 	 * @param categoryId
 	 */
 	@Transactional
-	public void deleteCategory(String... categoryIds);
+	public void deleteCategory(String categoryId);
 	
 	/**
 	 * Get dictionary category
@@ -82,12 +94,19 @@ public interface DictionaryService {
 	
 	
 	/**
-	 * Get dictionary categories by parent id
+	 * Get dictionary category children by category id
 	 * 
-	 * @param parentId
-	 * @param pageable
+	 * @param categoryId
 	 * @return
 	 */
-	public Page<DictionaryCategory> getCategorys(String parentId, Pageable pageable);
+	public List<DictionaryCategory> getCategoryChildren(String categoryId);
+	
+	/**
+	 * Get dictionary category all children by category id
+	 * 
+	 * @param categoryId
+	 * @return
+	 */
+	public List<DictionaryCategory> getCategoryAllChildren(String categoryId);
 	
 }
