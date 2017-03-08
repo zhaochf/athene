@@ -48,7 +48,7 @@ public class TreeJpaRepositorySupport<T extends TreeEntity, ID extends Serializa
 	
 	private static final String SELECT_CHILDREN_QUERY_STRING = "select x from %s x where x.parentId = :parentId and x.id != x.parentId";
 	
-	private static final String SELECT_CHILDREN_ALL_QUERY_STRING = "select x from %s x where x.leftLimit between :leftLimit and :rightLimit";
+	private static final String SELECT_CHILDREN_ALL_QUERY_STRING = "select x from %s x where x.id != :id and x.leftLimit between :leftLimit and :rightLimit";
 	
 
 	private final JpaEntityInformation<T, ?> entityInformation;
@@ -182,6 +182,7 @@ public class TreeJpaRepositorySupport<T extends TreeEntity, ID extends Serializa
 		T node = findOne(id);
 		Assert.notNull(node);
 		return entityManager.createQuery(QueryUtils.getQueryString(SELECT_CHILDREN_ALL_QUERY_STRING, entityInformation.getEntityName()), getDomainClass())
+				.setParameter("id", id)
 				.setParameter("leftLimit", node.getLeftLimit())
 				.setParameter("rightLimit", node.getRightLimit()).getResultList();
 	}
