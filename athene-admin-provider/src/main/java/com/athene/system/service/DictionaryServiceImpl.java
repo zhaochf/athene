@@ -9,11 +9,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 
 import com.athene.system.domain.Dictionary;
+import com.athene.system.domain.Dictionary.DictionaryId;
 import com.athene.system.domain.DictionaryCategory;
 import com.athene.system.repository.DictionaryCategoryRepository;
 import com.athene.system.repository.DictionaryRepository;
@@ -23,6 +25,7 @@ import com.athene.system.repository.DictionaryRepository;
  *
  */
 @Service
+@CacheConfig(cacheNames = {"dictionaries"})
 public class DictionaryServiceImpl implements DictionaryService {
 	
 	@Autowired
@@ -34,6 +37,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 	/* (non-Javadoc)
 	 * @see com.athene.system.service.DictionaryService#saveDictionary(com.athene.system.domain.Dictionary)
 	 */
+	@CachePut(key = "#dictionary.categoryId")
 	@Override
 	public Dictionary saveDictionary(Dictionary dictionary) {
 		if (Optional.of(dictionary).isPresent()) {
@@ -45,8 +49,9 @@ public class DictionaryServiceImpl implements DictionaryService {
 	/* (non-Javadoc)
 	 * @see com.athene.system.service.DictionaryService#deleteDictionaries(java.lang.String[])
 	 */
+	@CacheEvict(allEntries=true)
 	@Override
-	public void deleteDictionaries(String... dictionaryIds) {
+	public void deleteDictionaries(DictionaryId... dictionaryIds) {
 		Optional.of(dictionaryIds).ifPresent((ids) -> {
 			List<Dictionary> dictionaries = Collections.synchronizedList(Collections.emptyList());
 			Arrays.asList(ids).forEach((id) -> {
@@ -59,6 +64,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 	/* (non-Javadoc)
 	 * @see com.athene.system.service.DictionaryService#deleteDictionaries(java.lang.String)
 	 */
+	@CacheEvict(key = "#categoryId")
 	@Override
 	public void deleteDictionaries(String categoryId) {
 		Optional.of(categoryId).ifPresent((id) -> {
@@ -70,9 +76,9 @@ public class DictionaryServiceImpl implements DictionaryService {
 	 * @see com.athene.system.service.DictionaryService#getDictionaries(java.lang.String)
 	 */
 	@Override
-	public Page<Dictionary> getDictionaries(String categoryId, Pageable pageable) {
+	public List<Dictionary> getDictionaries(String categoryId) {
 		if (Optional.of(categoryId).isPresent()) {
-			return dictionaryRepository.findByCategoryId(categoryId, pageable);
+			return dictionaryRepository.findByCategoryId(categoryId);
 		}
 		return null;
 	}
@@ -111,7 +117,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 			List<DictionaryCategory> categories = categoryRepository.findAllChildren(categoryId);
 			Optional.of(categories).ifPresent(entities -> {
 				entities.stream().peek(entity -> {
-					dictionaryRepository.deleteByCategoryId(entity.getId());
+					deleteDictionaries(entity.getId());
 				});
 			});
 			categoryRepository.deleteNode(categoryId);

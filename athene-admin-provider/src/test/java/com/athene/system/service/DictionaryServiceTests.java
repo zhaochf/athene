@@ -20,13 +20,8 @@ public class DictionaryServiceTests extends AbstractTests {
 	
 	@Autowired
 	private DictionaryService dictionaryService;
-	
-//	@Test
-	public void test0Deletecategory() {
-		dictionaryService.deleteCategory("#");
-	}
 
-	@Test
+//	@Test
 	public void test1SaveCategory() {
 		getDictionaryCategories().forEach((category) -> {
 			dictionaryService.insertCategory(category);
@@ -36,93 +31,33 @@ public class DictionaryServiceTests extends AbstractTests {
 	@Test
 	public void test2GetCategoryChildren() {
 		List<DictionaryCategory> categories = dictionaryService.getCategoryChildren("#");
-		assertThat(2, equalTo(categories.size()));
+		assertThat(1, equalTo(categories.size()));
 	}
 	
 	@Test
 	public void test3GetCategroyAllChildren() {
-		List<DictionaryCategory> categories = dictionaryService.getCategoryAllChildren("1001");
-		assertThat(5, equalTo(categories.size()));
+		List<DictionaryCategory> categories = dictionaryService.getCategoryAllChildren("#");
+		assertThat(2, equalTo(categories.size()));
 	}
 
 	
 	private List<DictionaryCategory> getDictionaryCategories() {
 		List<DictionaryCategory> categories = new ArrayList<DictionaryCategory>();
 		
-		DictionaryCategory entity = new DictionaryCategory("1001");
+		DictionaryCategory entity = new DictionaryCategory("SYS-0001");
 		entity.setParentId("#");
-		entity.setName("Fruit");
-		entity.setDescription("Fruit");
+		entity.setName("系统");
+		entity.setDescription("系统内置字典");
 		entity.setCreatedBy("admin");
 		entity.setCreatedDate(ZonedDateTime.now());
 		entity.setLastModifiedBy("admin");
 		entity.setLastModifiedDate(ZonedDateTime.now());
 		categories.add(entity);
 		
-		entity = new DictionaryCategory("1002");
-		entity.setParentId("1001");
-		entity.setName("Red");
-		entity.setDescription("Red");
-		entity.setCreatedBy("admin");
-		entity.setCreatedDate(ZonedDateTime.now());
-		entity.setLastModifiedBy("admin");
-		entity.setLastModifiedDate(ZonedDateTime.now());
-		categories.add(entity);
-		
-		entity = new DictionaryCategory("1003");
-		entity.setParentId("1002");
-		entity.setName("Cherry");
-		entity.setDescription("Cherry");
-		entity.setCreatedBy("admin");
-		entity.setCreatedDate(ZonedDateTime.now());
-		entity.setLastModifiedBy("admin");
-		entity.setLastModifiedDate(ZonedDateTime.now());
-		categories.add(entity);
-		
-		entity = new DictionaryCategory("1004");
-		entity.setParentId("1002");
-		entity.setName("Apple");
-		entity.setDescription("Apple");
-		entity.setCreatedBy("admin");
-		entity.setCreatedDate(ZonedDateTime.now());
-		entity.setLastModifiedBy("admin");
-		entity.setLastModifiedDate(ZonedDateTime.now());
-		categories.add(entity);
-		
-		entity = new DictionaryCategory("1005");
-		entity.setParentId("1001");
-		entity.setName("Yellow");
-		entity.setDescription("Yellow");
-		entity.setCreatedBy("admin");
-		entity.setCreatedDate(ZonedDateTime.now());
-		entity.setLastModifiedBy("admin");
-		entity.setLastModifiedDate(ZonedDateTime.now());
-		categories.add(entity);
-		
-		entity = new DictionaryCategory("1006");
-		entity.setParentId("1005");
-		entity.setName("Banana");
-		entity.setDescription("Banana");
-		entity.setCreatedBy("admin");
-		entity.setCreatedDate(ZonedDateTime.now());
-		entity.setLastModifiedBy("admin");
-		entity.setLastModifiedDate(ZonedDateTime.now());
-		categories.add(entity);
-		
-		entity = new DictionaryCategory("1007");
-		entity.setParentId("#");
-		entity.setName("Meat");
-		entity.setDescription("Meat");
-		entity.setCreatedBy("admin");
-		entity.setCreatedDate(ZonedDateTime.now());
-		entity.setLastModifiedBy("admin");
-		entity.setLastModifiedDate(ZonedDateTime.now());
-		categories.add(entity);
-		
-		entity = new DictionaryCategory("1008");
-		entity.setParentId("1007");
-		entity.setName("Pork");
-		entity.setDescription("Pork");
+		entity = new DictionaryCategory("SYS-0001001");
+		entity.setParentId("SYS-0001");
+		entity.setName("布尔");
+		entity.setDescription("布尔型字典, 1=是(true), 0=否(false)");
 		entity.setCreatedBy("admin");
 		entity.setCreatedDate(ZonedDateTime.now());
 		entity.setLastModifiedBy("admin");

@@ -20,14 +20,14 @@
 	</appender>
 
 	<logger name="ch.qos.logback" level="error" />
-	<logger name="org.springframework.data" level="info" />
+	<logger name="org.springframework.data" level="error" />
 	<logger name="org.hibernate" level="error" />
 	<logger name="com.athene" level="debug" />
 	
 
 	<root level="error">
 		<appender-ref ref="console" />
-		<appender-ref ref="file" />
+		<!-- appender-ref ref="file" /-->
 	</root>
 
 </configuration>

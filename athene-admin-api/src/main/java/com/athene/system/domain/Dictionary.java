@@ -8,9 +8,11 @@ import java.time.ZonedDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 import com.athene.data.domain.AbstractEntity;
+import com.athene.data.domain.CompositeId;
 
 /**
  * @author zhaochf
@@ -18,50 +20,101 @@ import com.athene.data.domain.AbstractEntity;
  */
 @Entity
 @Table(name = "T_SYSTEM_DICTIONARY")
+@IdClass(Dictionary.DictionaryId.class)
 public class Dictionary extends AbstractEntity {
 
 	@Id
-	@Column(name="ID")
 	private String id;
-	
-	@Column(name="CATEGORY_ID")
+
+	@Id
+	@Column(name = "CATEGORY_ID")
 	private String categoryId;
-	
-	@Column(name="NAME")
+
+	@Column(name = "NAME")
 	private String name;
-	
-	@Column(name="DESCRIPTION")
+
+	@Column(name = "DESCRIPTION")
 	private String description;
-	
-	@Column(name="CREATED_BY")
+
+	@Column(name = "CREATED_BY")
 	private String createdBy;
-	
-	@Column(name="CREATED_DATE")
+
+	@Column(name = "CREATED_DATE")
 	private ZonedDateTime createdDate;
-	
-	@Column(name="LAST_MODIFIED_BY")
+
+	@Column(name = "LAST_MODIFIED_BY")
 	private String lastModifiedBy;
-	
-	@Column(name="LAST_MODIFIED_DATE")
+
+	@Column(name = "LAST_MODIFIED_DATE")
 	private ZonedDateTime lastModifiedDate;
-	
-	
+
+	public static class DictionaryId extends CompositeId {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		private String id;
+
+		private String categoryId;
+		
+		/**
+		 * @param id
+		 * @param categoryId
+		 */
+		public DictionaryId(String id, String categoryId) {
+			super();
+			this.id = id;
+			this.categoryId = categoryId;
+		}
+
+		/**
+		 * @return the id
+		 */
+		public String getId() {
+			return id;
+		}
+
+		/**
+		 * @param id the id to set
+		 */
+		public void setId(String id) {
+			this.id = id;
+		}
+
+		/**
+		 * @return the categoryId
+		 */
+		public String getCategoryId() {
+			return categoryId;
+		}
+
+		/**
+		 * @param categoryId the categoryId to set
+		 */
+		public void setCategoryId(String categoryId) {
+			this.categoryId = categoryId;
+		}
+	}
+
 	/**
 	 * 
 	 */
 	public Dictionary() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * @param id
 	 */
-	public Dictionary(String id) {
-		this.id = id;
+	public Dictionary(DictionaryId dictionaryId) {
+		this.id = dictionaryId.id;
+		this.categoryId = dictionaryId.categoryId;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.athene.data.domain.AbstractEntity#getId()
 	 */
 	@Override
@@ -70,13 +123,13 @@ public class Dictionary extends AbstractEntity {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	
+
 	/**
 	 * @return the categoryId
 	 */
@@ -85,7 +138,8 @@ public class Dictionary extends AbstractEntity {
 	}
 
 	/**
-	 * @param categoryId the categoryId to set
+	 * @param categoryId
+	 *            the categoryId to set
 	 */
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
@@ -99,7 +153,8 @@ public class Dictionary extends AbstractEntity {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -113,7 +168,8 @@ public class Dictionary extends AbstractEntity {
 	}
 
 	/**
-	 * @param description the description to set
+	 * @param description
+	 *            the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -127,7 +183,8 @@ public class Dictionary extends AbstractEntity {
 	}
 
 	/**
-	 * @param createdBy the createdBy to set
+	 * @param createdBy
+	 *            the createdBy to set
 	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
@@ -141,7 +198,8 @@ public class Dictionary extends AbstractEntity {
 	}
 
 	/**
-	 * @param createdDate the createdDate to set
+	 * @param createdDate
+	 *            the createdDate to set
 	 */
 	public void setCreatedDate(ZonedDateTime createdDate) {
 		this.createdDate = createdDate;
@@ -155,7 +213,8 @@ public class Dictionary extends AbstractEntity {
 	}
 
 	/**
-	 * @param lastModifiedBy the lastModifiedBy to set
+	 * @param lastModifiedBy
+	 *            the lastModifiedBy to set
 	 */
 	public void setLastModifiedBy(String lastModifiedBy) {
 		this.lastModifiedBy = lastModifiedBy;
@@ -169,7 +228,8 @@ public class Dictionary extends AbstractEntity {
 	}
 
 	/**
-	 * @param lastModifiedDate the lastModifiedDate to set
+	 * @param lastModifiedDate
+	 *            the lastModifiedDate to set
 	 */
 	public void setLastModifiedDate(ZonedDateTime lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;

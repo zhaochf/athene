@@ -5,12 +5,11 @@ package com.athene.system.service;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.athene.system.domain.Dictionary;
+import com.athene.system.domain.Dictionary.DictionaryId;
 import com.athene.system.domain.DictionaryCategory;
 
 /**
@@ -37,7 +36,7 @@ public interface DictionaryService {
 	 * @param dictionaryIds
 	 */
 	@Transactional
-	public void deleteDictionaries(String... dictionaryIds);
+	public void deleteDictionaries(DictionaryId... dictionaryIds);
 	
 	
 	/**
@@ -52,11 +51,10 @@ public interface DictionaryService {
 	 * Get dictionaries by category id
 	 * 
 	 * @param categoryId
-	 * @param pageable
 	 * 
 	 * @return
 	 */
-	public Page<Dictionary> getDictionaries(String categoryId, Pageable pageable);
+	public List<Dictionary> getDictionaries(String categoryId);
 	
 	/**
 	 * Save dictionary category

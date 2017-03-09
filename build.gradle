@@ -19,6 +19,7 @@ configure(allprojects) { project ->
 	ext.hamcrestVersion			= "1.3"
 	ext.hibernateVersion		= "5.2.8.Final"
 	ext.hibernateToolsVersion	= "5.2.1.Final"
+	ext.jedisVersion			= "2.9.0"
 	ext.junitVersion           	= "4.12"
 	ext.logbackVersion			= "1.2.1"
 	ext.mysqlVersion			= "6.0.5"
@@ -103,6 +104,7 @@ configure(subprojects) { subprojects ->
 			
 			dependency("org.hamcrest:hamcrest-core:${hamcrestVersion}")
 			dependency("org.hamcrest:hamcrest-library:${hamcrestVersion}")
+			dependency("redis.clients:jedis:${jedisVersion}")
 			dependency("junit:junit:${junitVersion}")
 			dependency("org.springframework:spring-test:${springVersion}")
 		}
@@ -137,8 +139,10 @@ project("athene-data") {
 		
 		compile("com.alibaba:druid")
 		compile("org.hibernate:hibernate-entitymanager")
+		compile("redis.clients:jedis")
 		compile("mysql:mysql-connector-java")
 		compile("org.springframework.data:spring-data-jpa")
+		compile("org.springframework.data:spring-data-redis")
 	}
 }
 
