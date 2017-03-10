@@ -40,6 +40,8 @@ import org.springframework.util.Assert;
 
 import com.alibaba.druid.pool.DruidDataSource;
 
+import redis.clients.jedis.JedisPoolConfig;
+
 /**
  * @author zhaochf
  *
@@ -86,13 +88,15 @@ public class TestConfig {
 	@Bean
 	public RedisConnectionFactory redisConnectionFactory() {
 		
-		return new JedisConnectionFactory(new RedisClusterConfiguration(redisConfigurations.getClusterNodes()));
+		return new JedisConnectionFactory(new RedisClusterConfiguration(redisConfigurations.getClusterNodes()), 
+				redisConfigurations.getJedisPoolConfig());
 	}
 	
 	@Bean
 	public RedisTemplate<?, ?> redisTemplate() {
 		RedisTemplate<?, ?> redisTemplate = new RedisTemplate<byte[], byte[]>();
 		redisTemplate.setConnectionFactory(redisConnectionFactory());
+		redisTemplate.setEnableTransactionSupport(true);
 		return redisTemplate;
 	}
 	
@@ -229,7 +233,9 @@ public class TestConfig {
 	@Component
 	public static final class RedisConfigurations {
 		
-		private static final List<String> clusterNodes = Collections.synchronizedList(new ArrayList<>());
+		private final List<String> clusterNodes = Collections.synchronizedList(new ArrayList<>());
+		
+		private final JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
 
 		/**
 		 * 
@@ -244,6 +250,13 @@ public class TestConfig {
 		 */
 		public List<String> getClusterNodes() {
 			return clusterNodes;
+		}
+
+		/**
+		 * @return the jedisPoolConfig
+		 */
+		public JedisPoolConfig getJedisPoolConfig() {
+			return jedisPoolConfig;
 		}
 	}
 }

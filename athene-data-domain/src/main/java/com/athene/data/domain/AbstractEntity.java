@@ -13,6 +13,11 @@ public abstract class AbstractEntity implements Entity {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 8253477890801990211L;
+
+	/**
+	 * 
 	 * @return
 	 */
 	public abstract Serializable getId();

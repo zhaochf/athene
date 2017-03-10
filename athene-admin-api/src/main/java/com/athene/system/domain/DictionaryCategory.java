@@ -10,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import com.athene.data.domain.TreeEntity;
 
 /**
@@ -20,6 +23,11 @@ import com.athene.data.domain.TreeEntity;
 @Table(name = "T_SYSTEM_DICTIONARY_CATEGORY")
 public class DictionaryCategory extends TreeEntity {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3716811477761979450L;
+
 	@Id
 	@Column(name = "ID")
 	private String id;
@@ -33,12 +41,14 @@ public class DictionaryCategory extends TreeEntity {
 	@Column(name = "CREATED_BY")
 	private String createdBy;
 
+	@CreatedDate
 	@Column(name = "CREATED_DATE")
 	private ZonedDateTime createdDate;
 
 	@Column(name = "LAST_MODIFIED_BY")
 	private String lastModifiedBy;
 
+	@LastModifiedDate
 	@Column(name = "LAST_MODIFIED_DATE")
 	private ZonedDateTime lastModifiedDate;
 

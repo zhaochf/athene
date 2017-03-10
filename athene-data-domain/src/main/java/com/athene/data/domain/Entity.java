@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author zhaochf
  *
  */
-public interface Entity {
+public interface Entity extends Serializable {
 
 	/**
 	 * get entity id

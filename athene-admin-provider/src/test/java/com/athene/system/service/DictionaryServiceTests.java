@@ -13,6 +13,8 @@ import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.athene.AbstractTests;
+import com.athene.system.domain.Dictionary;
+import com.athene.system.domain.Dictionary.DictionaryId;
 import com.athene.system.domain.DictionaryCategory;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -39,8 +41,26 @@ public class DictionaryServiceTests extends AbstractTests {
 		List<DictionaryCategory> categories = dictionaryService.getCategoryAllChildren("#");
 		assertThat(2, equalTo(categories.size()));
 	}
-
 	
+	@Test
+	public void test4SaveDictionaries() {
+		Dictionary dictionary = new Dictionary(new DictionaryId("1", "SYS-0001"));
+		dictionary.setName("是");
+		dictionary.setDescription(dictionary.getName());
+		dictionary.setCreatedBy("admin");
+		dictionary.setLastModifiedBy(dictionary.getCreatedBy());
+		dictionaryService.saveDictionary(dictionary);
+		
+		dictionary = new Dictionary(new DictionaryId("0", "SYS-0001"));
+		dictionary.setName("否");
+		dictionary.setDescription(dictionary.getName());
+		dictionary.setCreatedBy("admin");
+		dictionary.setLastModifiedBy(dictionary.getCreatedBy());
+		dictionaryService.saveDictionary(dictionary);
+	}
+	
+	
+
 	private List<DictionaryCategory> getDictionaryCategories() {
 		List<DictionaryCategory> categories = new ArrayList<DictionaryCategory>();
 		

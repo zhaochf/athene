@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import com.athene.data.domain.AbstractEntity;
 import com.athene.data.domain.CompositeId;
 
@@ -22,8 +25,14 @@ import com.athene.data.domain.CompositeId;
 @Table(name = "T_SYSTEM_DICTIONARY")
 @IdClass(Dictionary.DictionaryId.class)
 public class Dictionary extends AbstractEntity {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8701145678175757359L;
 
 	@Id
+	@Column(name = "ID")
 	private String id;
 
 	@Id
@@ -39,12 +48,14 @@ public class Dictionary extends AbstractEntity {
 	@Column(name = "CREATED_BY")
 	private String createdBy;
 
+	@CreatedDate
 	@Column(name = "CREATED_DATE")
 	private ZonedDateTime createdDate;
 
 	@Column(name = "LAST_MODIFIED_BY")
 	private String lastModifiedBy;
 
+	@LastModifiedDate
 	@Column(name = "LAST_MODIFIED_DATE")
 	private ZonedDateTime lastModifiedDate;
 
@@ -59,6 +70,13 @@ public class Dictionary extends AbstractEntity {
 
 		private String categoryId;
 		
+		/**
+		 * 
+		 */
+		public DictionaryId() {
+			super();
+		}
+
 		/**
 		 * @param id
 		 * @param categoryId

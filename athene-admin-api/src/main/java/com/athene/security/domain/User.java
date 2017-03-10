@@ -14,6 +14,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import com.athene.data.domain.AbstractEntity;
 
@@ -26,6 +28,11 @@ import com.athene.data.domain.AbstractEntity;
 @Table(name="T_SYSTEM_USER")
 public class User extends AbstractEntity {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1856376191822379068L;
+
 	@Id
 	@GeneratedValue(generator="uuid")
 	@GenericGenerator(name = "uuid",strategy = "org.hibernate.id.UUIDGenerator",
@@ -67,12 +74,14 @@ public class User extends AbstractEntity {
 	@Column(name="CREATED_BY")
 	private String createdBy;
 	
+	@CreatedDate
 	@Column(name="CREATED_DATE")
 	private ZonedDateTime createdDate;
 	
 	@Column(name="LAST_MODIFIED_BY")
 	private String lastModifiedBy;
 	
+	@LastModifiedDate
 	@Column(name="LAST_MODIFIED_DATE")
 	private ZonedDateTime lastModifiedDate;
 	

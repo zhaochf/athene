@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.athene.system.domain.Dictionary;
@@ -75,6 +76,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 	/* (non-Javadoc)
 	 * @see com.athene.system.service.DictionaryService#getDictionaries(java.lang.String)
 	 */
+	@Cacheable(key = "#categoryId")
 	@Override
 	public List<Dictionary> getDictionaries(String categoryId) {
 		if (Optional.of(categoryId).isPresent()) {
