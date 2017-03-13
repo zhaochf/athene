@@ -24,9 +24,11 @@ public interface UserService {
 	 * Save user
 	 * 
 	 * @param user
+	 * 
+	 * @return 
 	 */
 	@Transactional
-	public void saveUser(User user);
+	public User saveUser(User user);
 	
 	/**
 	 * Delete users  by user ids
@@ -36,12 +38,12 @@ public interface UserService {
 	public void deleteUsers(String... userIds);
 	
 	/**
-	 * Get user  by user id
+	 * Get user by key
 	 * 
 	 * @param userId
 	 * @return
 	 */
-	public User getUser(String userId);
+	public User getUser(String key);
 	
 	
 	/**

@@ -16,6 +16,9 @@ import com.athene.security.domain.User;
  *
  */
 public interface UserRepository extends JpaRepository<User, String> {
+	
+	@Query("select u from User u where u.username = :key or u.mobilePhone = :key or u.email = :key")
+	public User findByKey(@Param("key") String key);
 
 	/**
 	 * 

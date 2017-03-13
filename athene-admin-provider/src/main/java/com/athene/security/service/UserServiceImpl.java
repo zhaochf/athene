@@ -9,17 +9,24 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.athene.security.domain.User;
 import com.athene.security.repository.UserRepository;
-import com.athene.security.service.UserService;
 
 /**
  * @author zhaochf
  *
  */
+@Service
+@CacheConfig(cacheNames = {"users"})
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
@@ -28,17 +35,24 @@ public class UserServiceImpl implements UserService {
 	/* (non-Javadoc)
 	 * @see com.athene.security.service.UserService#saveUser(com.athene.security.domain.User)
 	 */
+	@Caching(put = {
+			@CachePut(key = "#user.username"),
+			@CachePut(key = "#user.mobilePhone"),
+			@CachePut(key = "#user.email")
+	})
 	@Override
-	public void saveUser(User user) {
-
-		Optional.of(user).ifPresent((entity) -> {
-			userRepository.save(entity);
-		});
+	public User saveUser(User user) {
+		
+		if (Optional.of(user).isPresent()) {
+			return userRepository.save(user);
+		}
+		return null;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.athene.security.service.UserService#deleteUsers(java.lang.String[])
 	 */
+	@CacheEvict(allEntries=true)
 	@Override
 	public void deleteUsers(String... userIds) {
 
@@ -54,11 +68,11 @@ public class UserServiceImpl implements UserService {
 	/* (non-Javadoc)
 	 * @see com.athene.security.service.UserService#getUser(java.lang.String)
 	 */
+	@Cacheable(key = "#key")
 	@Override
-	public User getUser(String userId) {
-		
-		if (Optional.of(userId).isPresent()) {
-			return userRepository.findOne(userId);
+	public User getUser(String key) {
+		if (Optional.of(key).isPresent()) {
+			return userRepository.findByKey(key);
 		}
 		return null;
 	}
@@ -74,5 +88,4 @@ public class UserServiceImpl implements UserService {
 		}
 		return null;
 	}
-
 }
