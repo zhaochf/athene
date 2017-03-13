@@ -30,13 +30,13 @@ public class DictionaryServiceTests extends AbstractTests {
 		});
 	}
 	
-	@Test
+//	@Test
 	public void test2GetCategoryChildren() {
 		List<DictionaryCategory> categories = dictionaryService.getCategoryChildren("#");
 		assertThat(1, equalTo(categories.size()));
 	}
 	
-	@Test
+//	@Test
 	public void test3GetCategroyAllChildren() {
 		List<DictionaryCategory> categories = dictionaryService.getCategoryAllChildren("#");
 		assertThat(2, equalTo(categories.size()));
@@ -59,6 +59,15 @@ public class DictionaryServiceTests extends AbstractTests {
 		dictionaryService.saveDictionary(dictionary);
 	}
 	
+	@Test
+	public void test5GetDictionaries() {
+		List<Dictionary> dictionaries = dictionaryService.getDictionaries("SYS-0001");
+		assertThat(2, equalTo(dictionaries.size()));
+		
+		logger.debug("Test get dictionaries again...");
+		dictionaries = dictionaryService.getDictionaries("SYS-0001");
+		assertThat(2, equalTo(dictionaries.size()));
+	}
 	
 
 	private List<DictionaryCategory> getDictionaryCategories() {

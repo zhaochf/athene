@@ -33,6 +33,6 @@ public interface DictionaryRepository extends JpaRepository<Dictionary, String> 
 	 * 
 	 * @return
 	 */
-	@Query("select d from Dictionary d where d.categoryId = :categoryId")
+	@Query("select d from Dictionary d where d.categoryId = :categoryId order by d.id")
 	public List<Dictionary> findByCategoryId(@Param("categoryId") String categoryId);
 }
