@@ -20,7 +20,7 @@
 	</appender>
 
 	<logger name="ch.qos.logback" level="error" />
-	<logger name="org.springframework.data" level="debug" />
+	<logger name="org.springframework" level="debug" />
 	<logger name="org.hibernate" level="info" />
 	<logger name="com.athene" level="debug" />
 	

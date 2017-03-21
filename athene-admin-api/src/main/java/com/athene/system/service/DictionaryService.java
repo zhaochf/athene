@@ -6,7 +6,6 @@ package com.athene.system.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.athene.system.domain.Dictionary;
 import com.athene.system.domain.Dictionary.DictionaryId;
@@ -27,7 +26,6 @@ public interface DictionaryService {
 	 * @param dictionary
 	 * @return
 	 */
-	@Transactional
 	public Dictionary saveDictionary(Dictionary dictionary);
 	
 	/**
@@ -35,7 +33,6 @@ public interface DictionaryService {
 	 * 
 	 * @param dictionaryIds
 	 */
-	@Transactional
 	public void deleteDictionaries(DictionaryId... dictionaryIds);
 	
 	
@@ -44,7 +41,6 @@ public interface DictionaryService {
 	 * 
 	 * @param categoryId
 	 */
-	@Transactional
 	public void deleteDictionaries(String categoryId);
 	
 	/**
@@ -62,7 +58,6 @@ public interface DictionaryService {
 	 * @param category
 	 * @return
 	 */
-	@Transactional
 	public DictionaryCategory saveCategory(DictionaryCategory category);
 	
 	/**
@@ -71,7 +66,6 @@ public interface DictionaryService {
 	 * @param category
 	 * @return
 	 */
-	@Transactional
 	public DictionaryCategory insertCategory(DictionaryCategory category);
 	
 	/**
@@ -79,7 +73,6 @@ public interface DictionaryService {
 	 * 
 	 * @param categoryId
 	 */
-	@Transactional
 	public void deleteCategory(String categoryId);
 	
 	/**

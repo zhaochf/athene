@@ -14,6 +14,11 @@ import javax.persistence.MappedSuperclass;
 public abstract class TreeEntity extends AbstractEntity {
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4965279231057210613L;
+
+	/**
 	 * Defined root id is '#' 
 	 */
 	public static final String ROOT_ID = "#";

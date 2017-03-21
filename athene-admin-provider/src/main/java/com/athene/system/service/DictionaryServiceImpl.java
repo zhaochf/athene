@@ -13,6 +13,7 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.athene.system.domain.Dictionary;
 import com.athene.system.domain.Dictionary.DictionaryId;
@@ -38,6 +39,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 	 * @see com.athene.system.service.DictionaryService#saveDictionary(com.athene.system.domain.Dictionary)
 	 */
 	@CacheEvict(key = "#dictionary.categoryId")
+	@Transactional
 	@Override
 	public Dictionary saveDictionary(Dictionary dictionary) {
 		if (Optional.of(dictionary).isPresent()) {
@@ -50,6 +52,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 	 * @see com.athene.system.service.DictionaryService#deleteDictionaries(java.lang.String[])
 	 */
 	@CacheEvict(allEntries=true)
+	@Transactional
 	@Override
 	public void deleteDictionaries(DictionaryId... dictionaryIds) {
 		Optional.of(dictionaryIds).ifPresent((ids) -> {
@@ -65,6 +68,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 	 * @see com.athene.system.service.DictionaryService#deleteDictionaries(java.lang.String)
 	 */
 	@CacheEvict(key = "#categoryId")
+	@Transactional
 	@Override
 	public void deleteDictionaries(String categoryId) {
 		Optional.of(categoryId).ifPresent((id) -> {
@@ -87,6 +91,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 	/* (non-Javadoc)
 	 * @see com.athene.system.service.DictionaryService#saveCategory(com.athene.system.domain.DictionaryCategory)
 	 */
+	@Transactional
 	@Override
 	public DictionaryCategory saveCategory(DictionaryCategory category) {
 		if (Optional.of(category).isPresent()) {
@@ -99,6 +104,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 	/* (non-Javadoc)
 	 * @see com.athene.system.service.DictionaryService#insertCategory(com.athene.system.domain.DictionaryCategory)
 	 */
+	@Transactional
 	@Override
 	public DictionaryCategory insertCategory(DictionaryCategory category) {
 		
@@ -111,6 +117,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 	/* (non-Javadoc)
 	 * @see com.athene.system.service.DictionaryService#deleteCategory(java.lang.String)
 	 */
+	@Transactional
 	@Override
 	public void deleteCategory(String categoryId) {
 		

@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
@@ -40,6 +42,7 @@ public class UserServiceImpl implements UserService {
 			@CachePut(key = "#user.mobilePhone"),
 			@CachePut(key = "#user.email")
 	})
+	@Transactional
 	@Override
 	public User saveUser(User user) {
 		
@@ -53,6 +56,7 @@ public class UserServiceImpl implements UserService {
 	 * @see com.athene.security.service.UserService#deleteUsers(java.lang.String[])
 	 */
 	@CacheEvict(allEntries=true)
+	@Transactional
 	@Override
 	public void deleteUsers(String... userIds) {
 
