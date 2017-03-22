@@ -29,7 +29,7 @@ import IceInternal.OutgoingAsync;
  * @author zhaochf
  *
  */
-public class ConsumerFacet<T extends Service> extends Ice.ObjectPrxHelperBase implements InvocationHandler {
+public class ConsumerProxy<T extends Service> extends Ice.ObjectPrxHelperBase implements InvocationHandler {
 
 	/**
 	 * 
@@ -48,7 +48,7 @@ public class ConsumerFacet<T extends Service> extends Ice.ObjectPrxHelperBase im
 	/**
 	 * @param serviceClass
 	 */
-	public ConsumerFacet(Class<T> serviceClass) {
+	public ConsumerProxy(Class<T> serviceClass) {
 		Assert.isTrue(serviceClass.isInterface());
 		Assert.isAssignable(Service.class, serviceClass);
 		

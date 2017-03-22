@@ -148,7 +148,13 @@ project("athene-data") {
 	}
 }
 
-project("athene-provider-api") {
+project("athene-core") {
+	dependencies {
+		compile(project(":athene-core-api"))
+	}
+}
+
+project("athene-core-api") {
 	dependencies {
 		compile("com.zeroc:ice")
 		compile("org.springframework:spring-core")

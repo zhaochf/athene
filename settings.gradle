@@ -3,7 +3,9 @@ rootProject.name = 'athene'
 include "athene-data-domain"
 include "athene-data"
 include "athene-data-tools"
-include "athene-provider-api"
+
+include "athene-core"
+include "athene-core-api"
 
 include "athene-logger"
 
