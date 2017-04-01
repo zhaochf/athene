@@ -106,6 +106,7 @@ configure(subprojects) { subprojects ->
 			dependency("org.hamcrest:hamcrest-core:${hamcrestVersion}")
 			dependency("org.hamcrest:hamcrest-library:${hamcrestVersion}")
 			dependency("com.zeroc:ice:${iceVersion}")
+			dependency("com.zeroc:icebox:${iceVersion}")
 			dependency("redis.clients:jedis:${jedisVersion}")
 			dependency("junit:junit:${junitVersion}")
 			dependency("org.springframework:spring-test:${springVersion}")
@@ -151,13 +152,21 @@ project("athene-data") {
 project("athene-core") {
 	dependencies {
 		compile(project(":athene-core-api"))
+		compile ("com.zeroc:icebox")
 	}
 }
 
 project("athene-core-api") {
 	dependencies {
 		compile("com.zeroc:ice")
+		compile("org.springframework:spring-context")
 		compile("org.springframework:spring-core")
+	}
+}
+
+project("athene-logger") {
+	dependencies {
+		compile ("com.zeroc:ice:3.6.3")
 	}
 }
 
@@ -167,12 +176,6 @@ project("athene-data-tools") {
 		compile("org.hibernate:hibernate-tools")
 		compile("org.springframework.data:spring-data-jpa")
 		compile("mysql:mysql-connector-java")
-	}
-}
-
-project("athene-logger") {
-	dependencies {
-		compile ("com.zeroc:ice:3.6.3")
 	}
 }
 

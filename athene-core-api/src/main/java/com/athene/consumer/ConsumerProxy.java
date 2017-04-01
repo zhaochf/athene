@@ -41,7 +41,7 @@ public class ConsumerProxy<T extends Service> extends Ice.ObjectPrxHelperBase im
 	private static final Map<Method, String> OPERATION_MAPPINGS = Collections.synchronizedMap(new HashMap<Method, String>());
 	
 	static {
-		IDS[0] = Service.PROVIDER_DEFAULT_ID; 
+		IDS[0] = Service.serviceDefaultId; 
 	}
 	
 	
