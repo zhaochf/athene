@@ -3,7 +3,14 @@
  */
 package com.athene.core;
 
-import com.athene.core.provider.ServiceManagerTemp;
+
+import org.kohsuke.args4j.CmdLineException;
+import org.kohsuke.args4j.CmdLineParser;
+import org.kohsuke.args4j.Option;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.athene.core.provider.ServiceManager;
 
 import Ice.Application;
 import Ice.InitializationData;
@@ -33,7 +40,30 @@ public final class Server extends Application {
 
 	@Override
 	public int run(String[] args) {
-		return new ServiceManagerTemp(communicator(), args).run();
+		Options options = new Options();
+		CmdLineParser parser = new CmdLineParser(options);
+		try {
+			parser.parseArgument(args);
+			ApplicationContext applicationContext = new AnnotationConfigApplicationContext();
+			
+			return new ServiceManager(applicationContext, communicator(), args).run();
+		} catch (CmdLineException e) {
+			printUsage(parser);
+			return 1;
+		}
 	}
 
+	private static void printUsage(CmdLineParser parser) {
+		final String usage = "Usage: com.athene.core.Server [options...] arguments...";
+		System.out.println(usage);
+		parser.printUsage(System.out);
+	}
+	
+	private static class Options {
+		
+		@Option(name = "-config", required = true, usage = "The application config class is required(com.xxx.AppConfig)")
+		private String appConfig;
+	}
+	
+	
 }

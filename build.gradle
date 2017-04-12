@@ -13,6 +13,7 @@ configure(allprojects) { project ->
 	group = "com.athene"
 	version = qualifyVersionIfNecessary(version)
 	
+	ext.args4jVersion			= "2.33"
 	ext.commonsBeanutilsVersion	= "1.9.3"
 	ext.druidVersion			= "1.0.28"
 	ext.guavaVersion			= "21.0"
@@ -88,6 +89,7 @@ configure(subprojects) { subprojects ->
 			mavenBom "org.springframework:spring-framework-bom:${springVersion}"
 		}
 		dependencies {
+			dependency("args4j:args4j:${args4jVersion}")
 			dependency("commons-beanutils:commons-beanutils:${commonsBeanutilsVersion}") {
 				exclude 'commons-logging:commons-logging'
 			}
@@ -152,6 +154,7 @@ project("athene-data") {
 project("athene-core") {
 	dependencies {
 		compile(project(":athene-core-api"))
+		compile ("args4j:args4j")
 		compile ("com.zeroc:icebox")
 	}
 }
