@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d %-5level [%thread] %logger - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>athene.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>athene-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<maxFileSize>100MB</maxFileSize>
+			<maxHistory>30</maxHistory>
+			<totalSizeCap>3GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d %-5level [%thread] %logger - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="ch.qos.logback" level="error" />
+	<logger name="org.springframework" level="info" />
+	<logger name="org.hibernate" level="info" />
+	<logger name="com.athene" level="debug" />
+	
+
+	<root level="error">
+		<appender-ref ref="console" />
+		<!-- appender-ref ref="file" /-->
+	</root>
+
+</configuration>
