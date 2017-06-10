@@ -1,12 +1,17 @@
+
 buildscript {
 	repositories {
-		mavenLocal()
-		maven { url "http://172.16.2.71:8081/repository/maven-public/" }
+		maven { url "https://repo.spring.io/plugins-release" }
 	}
 	
 	dependencies {
 		classpath("io.spring.gradle:dependency-management-plugin:1.0.0.RELEASE")
 	}
+}
+
+plugins {
+    id 'org.springframework.boot' version '1.5.4.RELEASE'
+    id 'java'
 }
 
 configure(allprojects) { project ->
@@ -16,10 +21,12 @@ configure(allprojects) { project ->
 	ext.args4jVersion			= "2.33"
 	ext.commonsBeanutilsVersion	= "1.9.3"
 	ext.druidVersion			= "1.0.28"
+	ext.fastjsonVersion			= "1.2.32"
 	ext.guavaVersion			= "21.0"
 	ext.hamcrestVersion			= "1.3"
 	ext.hibernateVersion		= "5.2.8.Final"
 	ext.hibernateToolsVersion	= "5.2.1.Final"
+	ext.hsqldbVersion			= "2.4.0"
 	ext.iceVersion				= "3.6.3"
 	ext.jedisVersion			= "2.9.0"
 	ext.junitVersion           	= "4.12"
@@ -27,8 +34,9 @@ configure(allprojects) { project ->
 	ext.mysqlVersion			= "6.0.5"
 	ext.slf4jVersion           	= "1.7.22"
 	ext.snifferVersion         	= "1.15"
-	ext.springVersion			= "4.3.6.RELEASE"
+	ext.springVersion			= "4.3.9.RELEASE"
 	ext.springDataVersion		= "Ingalls-RELEASE"
+	ext.springBootVersion		= "1.5.4.RELEASE"
 	
 	ext.gradleScriptDir = "${rootProject.projectDir}/gradle"
 
@@ -74,7 +82,7 @@ configure(allprojects) { project ->
 	
 	repositories {
 		mavenLocal()
-		maven { url "http://172.16.2.71:8081/repository/maven-public/" }
+		maven { url "https://repo.spring.io/plugins-release" }
 	}
 }
 
@@ -94,16 +102,19 @@ configure(subprojects) { subprojects ->
 				exclude 'commons-logging:commons-logging'
 			}
 			dependency("com.alibaba:druid:${druidVersion}")
+			dependency("com.alibaba:fastjson:${fastjsonVersion}")
 			dependency("com.google.guava:guava:${guavaVersion}")
 			dependency("org.hibernate:hibernate-core:${hibernateVersion}")
 			dependency("org.hibernate:hibernate-entitymanager:${hibernateVersion}")
 			dependency("org.hibernate:hibernate-tools:${hibernateToolsVersion}")
+			dependency("org.hsqldb:hsqldb:${hsqldbVersion}")
 			dependency("org.slf4j:slf4j-api:${slf4jVersion}")
 			dependency("mysql:mysql-connector-java:${mysqlVersion}")
 			dependency("ch.qos.logback:logback-classic:${logbackVersion}")
 			dependency("org.springframework:spring-core:${springVersion}") {
 				exclude 'commons-logging:commons-logging'
 			}
+			dependency("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
 			
 			dependency("org.hamcrest:hamcrest-core:${hamcrestVersion}")
 			dependency("org.hamcrest:hamcrest-library:${hamcrestVersion}")
@@ -199,6 +210,17 @@ project("athene-admin-provider") {
 	}
 }
 
+project("sybxjr") {
+	
+	dependencies {
+		compile("org.springframework.boot:spring-boot-starter-web")
+		compile("com.alibaba:fastjson")
+		compile(project(":athene-data"))
+		compile("org.hsqldb:hsqldb")
+		
+	}
+}
+
 def qualifyVersionIfNecessary(version) {
 	if (rootProject.hasProperty("BRANCH_NAME")) {
 		def qualifier = rootProject.getProperty("BRANCH_NAME")
@@ -211,5 +233,5 @@ def qualifyVersionIfNecessary(version) {
 
 repositories {
     mavenLocal()
-    maven { url "http://172.16.2.71:8081/repository/maven-public/" }
+    maven { url "https://repo.spring.io/plugins-release" }
 }
