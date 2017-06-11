@@ -14,9 +14,10 @@ public class MessageProcessorTests {
 	 */
 	public static void main(String[] args) {
 
-		MessageProcessor processor = new MessageProcessor("2fMVbe6Nvtyy6CsV");
+		MessageProcessor processor = new MessageProcessor("djH4YdDuKrTpqvmA");
 		
-		String messages = "{\"medicalNum\":\"\",\"hospitalizedNum\":\"\", \"credentialType\":\"01\",\"credentialNum\":\"130419199201182110\", \"treatBeginDate\":\"20170201\", \"treatEndDate\":\"20170203\"}";
+//		String messages = "{\"medicalNum\":\"10076224\",\"hospitalizedNum\":\"\", \"credentialType\":\"01\",\"credentialNum\":\"130419199201182110\", \"treatBeginDate\":\"20170201\", \"treatEndDate\":\"20170203\"}";
+		String messages = "123456";
 		String encript = processor.encrypt(messages);
 		String decript = processor.decrypt(encript);
 		System.out.println(String.format("The encript messages is: %s", encript));

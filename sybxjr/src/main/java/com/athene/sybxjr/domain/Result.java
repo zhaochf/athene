@@ -19,12 +19,10 @@ public class Result {
 	}
 
 	public Result(Object data) {
-		super();
 		this.data = data;
 	}
 	
 	public Result(String code, String message) {
-		super();
 		this.code = code;
 		this.message = message;
 	}

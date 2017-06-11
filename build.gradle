@@ -19,6 +19,7 @@ configure(allprojects) { project ->
 	version = qualifyVersionIfNecessary(version)
 	
 	ext.args4jVersion			= "2.33"
+	ext.aspectjweaverVersion	= "1.8.10"
 	ext.commonsBeanutilsVersion	= "1.9.3"
 	ext.druidVersion			= "1.0.28"
 	ext.fastjsonVersion			= "1.2.32"
@@ -26,7 +27,6 @@ configure(allprojects) { project ->
 	ext.hamcrestVersion			= "1.3"
 	ext.hibernateVersion		= "5.2.8.Final"
 	ext.hibernateToolsVersion	= "5.2.1.Final"
-	ext.hsqldbVersion			= "2.4.0"
 	ext.iceVersion				= "3.6.3"
 	ext.jedisVersion			= "2.9.0"
 	ext.junitVersion           	= "4.12"
@@ -98,6 +98,7 @@ configure(subprojects) { subprojects ->
 		}
 		dependencies {
 			dependency("args4j:args4j:${args4jVersion}")
+			dependency("org.aspectj:aspectjweaver:${aspectjweaverVersion}")
 			dependency("commons-beanutils:commons-beanutils:${commonsBeanutilsVersion}") {
 				exclude 'commons-logging:commons-logging'
 			}
@@ -107,7 +108,6 @@ configure(subprojects) { subprojects ->
 			dependency("org.hibernate:hibernate-core:${hibernateVersion}")
 			dependency("org.hibernate:hibernate-entitymanager:${hibernateVersion}")
 			dependency("org.hibernate:hibernate-tools:${hibernateToolsVersion}")
-			dependency("org.hsqldb:hsqldb:${hsqldbVersion}")
 			dependency("org.slf4j:slf4j-api:${slf4jVersion}")
 			dependency("mysql:mysql-connector-java:${mysqlVersion}")
 			dependency("ch.qos.logback:logback-classic:${logbackVersion}")
@@ -154,6 +154,7 @@ project("athene-data") {
 		compile(project(":athene-data-domain"))
 		
 		compile("com.alibaba:druid")
+		compile("org.aspectj:aspectjweaver")
 		compile("org.hibernate:hibernate-entitymanager")
 		compile("redis.clients:jedis")
 		compile("mysql:mysql-connector-java")
@@ -216,8 +217,6 @@ project("sybxjr") {
 		compile("org.springframework.boot:spring-boot-starter-web")
 		compile("com.alibaba:fastjson")
 		compile(project(":athene-data"))
-		compile("org.hsqldb:hsqldb")
-		
 	}
 }
 
