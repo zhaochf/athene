@@ -9,14 +9,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.athene.sybxjr.domain.Diagnosis;
+import com.athene.sybxjr.domain.AssayDetail;
 
 /**
  * @author zhaochf
  *
  */
-public interface DiagnosisRepository extends JpaRepository<Diagnosis, String> {
+public interface AssayDetailRepository extends JpaRepository<AssayDetail, String> {
 
-	@Query("select d from Diagnosis d where d.medicalNum = :medicalNum")
-	List<Diagnosis> getDiagnosises(@Param("medicalNum") String medicalNum);
+	@Query("select a from AssayDetail a where a.labFlow = :labFlow")
+	List<AssayDetail> getAssayDetails(@Param("labFlow") String labFlow);
 }

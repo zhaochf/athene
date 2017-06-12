@@ -27,6 +27,8 @@ public class SettleCancel extends AbstractEntity {
 	@Id
 	private String medicalNum;
 	
+	private String invoiceNO;
+	
 	private String isRefund;
 	
 	private String revokeDate;
@@ -55,6 +57,20 @@ public class SettleCancel extends AbstractEntity {
 	 */
 	public void setMedicalNum(String medicalNum) {
 		this.medicalNum = medicalNum;
+	}
+
+	/**
+	 * @return the invoiceNO
+	 */
+	public String getInvoiceNO() {
+		return invoiceNO;
+	}
+
+	/**
+	 * @param invoiceNO the invoiceNO to set
+	 */
+	public void setInvoiceNO(String invoiceNO) {
+		this.invoiceNO = invoiceNO;
 	}
 
 	/**
