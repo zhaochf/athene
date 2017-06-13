@@ -10,8 +10,9 @@ buildscript {
 }
 
 plugins {
-    id 'org.springframework.boot' version '1.5.4.RELEASE'
-    id 'java'
+    id "java"
+    id "application"
+    id "org.springframework.boot" version "1.5.4.RELEASE"
 }
 
 configure(allprojects) { project ->
@@ -214,6 +215,28 @@ project("athene-admin-provider") {
 }
 
 project("sybxjr") {
+
+	apply plugin: "java"
+	apply plugin: "application"
+	
+	mainClassName = "com.athene.sybxjr.Application"
+	jar {
+		manifest {
+	        attributes("Implementation-Title": "zhaochf",
+	                   "Implementation-Version": version)
+	    }
+		excludes = ["**/*.properties", "**/*.xml"]
+	}
+	
+	distributions {
+	    main {
+	        contents {
+	            from("config") {
+	                into "config"
+	            }
+	        }
+	    }
+	}
 	
 	dependencies {
 		compile("com.alibaba:fastjson")

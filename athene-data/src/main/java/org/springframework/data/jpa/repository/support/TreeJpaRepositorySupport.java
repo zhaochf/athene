@@ -80,11 +80,11 @@ public class TreeJpaRepositorySupport<T extends TreeEntity, ID extends Serializa
 	@Override
 	@Transactional
 	public T insertNode(T entity) {
-		Assert.notNull(entity);
+		Assert.notNull(entity, "The entity can not be null.");
 		
 		// Get parent node entity
 		T parent = find(entity.getParentId());
-		Assert.notNull(parent);
+		Assert.notNull(parent, "The entity parent can not be null.");
 		
 		// Update parent is leaf false
 		parent.setIsLeaf(false);
@@ -117,7 +117,7 @@ public class TreeJpaRepositorySupport<T extends TreeEntity, ID extends Serializa
 	public void deleteNode(ID id) {
 		// Get will delete node
 		T node = findOne(id);
-		Assert.notNull(node);
+		Assert.notNull(node, "The node entity can not be null.");
 		
 		// Update all will delete children parent id value of root
 		entityManager.createQuery(QueryUtils.getQueryString(DELETE_UPDATE_PARENT_QUERY_STRING, entityInformation.getEntityName()))
@@ -160,7 +160,7 @@ public class TreeJpaRepositorySupport<T extends TreeEntity, ID extends Serializa
 	@Override
 	public List<T> findChildren(ID id) {
 		
-		Assert.notNull(id);
+		Assert.notNull(id, "The id can not be null.");
 		
 		return entityManager.createQuery(QueryUtils.getQueryString(SELECT_CHILDREN_QUERY_STRING, entityInformation.getEntityName()), getDomainClass())
 				.setParameter("parentId", id).getResultList();
@@ -176,11 +176,11 @@ public class TreeJpaRepositorySupport<T extends TreeEntity, ID extends Serializa
 	@Override
 	public List<T> findAllChildren(ID id) {
 		
-		Assert.notNull(id);
+		Assert.notNull(id, "The id can not be null.");
 		
 		// Get will delete node
 		T node = findOne(id);
-		Assert.notNull(node);
+		Assert.notNull(node, "The node entity cant not be null.");
 		return entityManager.createQuery(QueryUtils.getQueryString(SELECT_CHILDREN_ALL_QUERY_STRING, entityInformation.getEntityName()), getDomainClass())
 				.setParameter("id", id)
 				.setParameter("leftLimit", node.getLeftLimit())
