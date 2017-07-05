@@ -31,6 +31,8 @@ public class SettleCancel extends AbstractEntity {
 	
 	private String isRefund;
 	
+	private String refundReason;
+	
 	private String revokeDate;
 	
 	private String updateBy;
@@ -85,6 +87,20 @@ public class SettleCancel extends AbstractEntity {
 	 */
 	public void setIsRefund(String isRefund) {
 		this.isRefund = isRefund;
+	}
+	
+	/**
+	 * @return the refundReason
+	 */
+	public String getRefundReason() {
+		return refundReason;
+	}
+
+	/**
+	 * @param refundReason the refundReason to set
+	 */
+	public void setRefundReason(String refundReason) {
+		this.refundReason = refundReason;
 	}
 
 	/**

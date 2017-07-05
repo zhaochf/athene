@@ -35,8 +35,6 @@ public class Prefile extends AbstractEntity {
 	
 	private String conditionDescription;
 	
-	private String inHosDiagnosisCode;
-	
 	private String inHosDiagnosisName;
 	
 	private String inHosDoctorCode;
@@ -85,15 +83,7 @@ public class Prefile extends AbstractEntity {
 	
 	private String updateBy;
 	
-	private String inHosMedDiagnosisCode;
-	
-	private String inHosMedDiagnosisName;
-	
 	private String remark;
-	
-	private String socialNumber;
-	
-	private String isInSocialSecurityFlg;
 	
 	private String currMedicalCost;
 	
@@ -104,12 +94,6 @@ public class Prefile extends AbstractEntity {
 	private String guardianIDDueDay;
 	
 	private String email;
-	
-	private String admissionDate;
-	
-	private String admissionDeptCode;
-	
-	private String admissionDeptName;
 	
 	private String thirdCode;
 	
@@ -192,22 +176,6 @@ public class Prefile extends AbstractEntity {
 	 */
 	public void setConditionDescription(String conditionDescription) {
 		this.conditionDescription = conditionDescription;
-	}
-
-
-	/**
-	 * @return the inHosDiagnosisCode
-	 */
-	public String getInHosDiagnosisCode() {
-		return inHosDiagnosisCode;
-	}
-
-
-	/**
-	 * @param inHosDiagnosisCode the inHosDiagnosisCode to set
-	 */
-	public void setInHosDiagnosisCode(String inHosDiagnosisCode) {
-		this.inHosDiagnosisCode = inHosDiagnosisCode;
 	}
 
 
@@ -596,38 +564,6 @@ public class Prefile extends AbstractEntity {
 
 
 	/**
-	 * @return the inHosMedDiagnosisCode
-	 */
-	public String getInHosMedDiagnosisCode() {
-		return inHosMedDiagnosisCode;
-	}
-
-
-	/**
-	 * @param inHosMedDiagnosisCode the inHosMedDiagnosisCode to set
-	 */
-	public void setInHosMedDiagnosisCode(String inHosMedDiagnosisCode) {
-		this.inHosMedDiagnosisCode = inHosMedDiagnosisCode;
-	}
-
-
-	/**
-	 * @return the inHosMedDiagnosisName
-	 */
-	public String getInHosMedDiagnosisName() {
-		return inHosMedDiagnosisName;
-	}
-
-
-	/**
-	 * @param inHosMedDiagnosisName the inHosMedDiagnosisName to set
-	 */
-	public void setInHosMedDiagnosisName(String inHosMedDiagnosisName) {
-		this.inHosMedDiagnosisName = inHosMedDiagnosisName;
-	}
-
-
-	/**
 	 * @return the remark
 	 */
 	public String getRemark() {
@@ -641,39 +577,6 @@ public class Prefile extends AbstractEntity {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-
-
-	/**
-	 * @return the socialNumber
-	 */
-	public String getSocialNumber() {
-		return socialNumber;
-	}
-
-
-	/**
-	 * @param socialNumber the socialNumber to set
-	 */
-	public void setSocialNumber(String socialNumber) {
-		this.socialNumber = socialNumber;
-	}
-
-
-	/**
-	 * @return the isInSocialSecurityFlg
-	 */
-	public String getIsInSocialSecurityFlg() {
-		return isInSocialSecurityFlg;
-	}
-
-
-	/**
-	 * @param isInSocialSecurityFlg the isInSocialSecurityFlg to set
-	 */
-	public void setIsInSocialSecurityFlg(String isInSocialSecurityFlg) {
-		this.isInSocialSecurityFlg = isInSocialSecurityFlg;
-	}
-
 
 	/**
 	 * @return the currMedicalCost
@@ -753,55 +656,6 @@ public class Prefile extends AbstractEntity {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
-	/**
-	 * @return the admissionDate
-	 */
-	public String getAdmissionDate() {
-		return admissionDate;
-	}
-
-
-	/**
-	 * @param admissionDate the admissionDate to set
-	 */
-	public void setAdmissionDate(String admissionDate) {
-		this.admissionDate = admissionDate;
-	}
-
-
-	/**
-	 * @return the admissionDeptCode
-	 */
-	public String getAdmissionDeptCode() {
-		return admissionDeptCode;
-	}
-
-
-	/**
-	 * @param admissionDeptCode the admissionDeptCode to set
-	 */
-	public void setAdmissionDeptCode(String admissionDeptCode) {
-		this.admissionDeptCode = admissionDeptCode;
-	}
-
-
-	/**
-	 * @return the admissionDeptName
-	 */
-	public String getAdmissionDeptName() {
-		return admissionDeptName;
-	}
-
-
-	/**
-	 * @param admissionDeptName the admissionDeptName to set
-	 */
-	public void setAdmissionDeptName(String admissionDeptName) {
-		this.admissionDeptName = admissionDeptName;
-	}
-
 
 	/**
 	 * @return the thirdCode

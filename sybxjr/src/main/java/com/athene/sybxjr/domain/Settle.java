@@ -80,19 +80,11 @@ public class Settle extends AbstractEntity {
 	@Transient
 	private List<Medicare> medicareList;
 	
-	private String isPrintPolicy;
-	
 	private String medicarestr;
 	
 	private String dischMedDiagnosisCode;
 	
 	private String dischMedDiagnosisName;
-	
-	private String enteDate;
-	
-	private String departCode;
-	
-	private String departName;
 	
 	private String normDischDiagnosisCode;
 	
@@ -523,23 +515,6 @@ public class Settle extends AbstractEntity {
 		this.medicareList = medicareList;
 	}
 
-
-	/**
-	 * @return the isPrintPolicy
-	 */
-	public String getIsPrintPolicy() {
-		return isPrintPolicy;
-	}
-
-
-	/**
-	 * @param isPrintPolicy the isPrintPolicy to set
-	 */
-	public void setIsPrintPolicy(String isPrintPolicy) {
-		this.isPrintPolicy = isPrintPolicy;
-	}
-
-
 	/**
 	 * @return the medicarestr
 	 */
@@ -585,54 +560,6 @@ public class Settle extends AbstractEntity {
 	 */
 	public void setDischMedDiagnosisName(String dischMedDiagnosisName) {
 		this.dischMedDiagnosisName = dischMedDiagnosisName;
-	}
-
-
-	/**
-	 * @return the enteDate
-	 */
-	public String getEnteDate() {
-		return enteDate;
-	}
-
-
-	/**
-	 * @param enteDate the enteDate to set
-	 */
-	public void setEnteDate(String enteDate) {
-		this.enteDate = enteDate;
-	}
-
-
-	/**
-	 * @return the departCode
-	 */
-	public String getDepartCode() {
-		return departCode;
-	}
-
-
-	/**
-	 * @param departCode the departCode to set
-	 */
-	public void setDepartCode(String departCode) {
-		this.departCode = departCode;
-	}
-
-
-	/**
-	 * @return the departName
-	 */
-	public String getDepartName() {
-		return departName;
-	}
-
-
-	/**
-	 * @param departName the departName to set
-	 */
-	public void setDepartName(String departName) {
-		this.departName = departName;
 	}
 
 

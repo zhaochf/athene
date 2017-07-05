@@ -61,16 +61,6 @@ public class Medicare extends AbstractEntity {
 	
 	private String cashMoney;
 	
-	private String oversizedMoney;
-	
-	private String retireMoney;
-	
-	private String armyMoney;
-	
-	private String specialMoney;
-	
-	private String newRuralMoney;
-	
 	private String bigPayMoney;
 	
 	private String bigSelfPayMoney;
@@ -373,87 +363,6 @@ public class Medicare extends AbstractEntity {
 	public void setCashMoney(String cashMoney) {
 		this.cashMoney = cashMoney;
 	}
-
-
-	/**
-	 * @return the oversizedMoney
-	 */
-	public String getOversizedMoney() {
-		return oversizedMoney;
-	}
-
-
-	/**
-	 * @param oversizedMoney the oversizedMoney to set
-	 */
-	public void setOversizedMoney(String oversizedMoney) {
-		this.oversizedMoney = oversizedMoney;
-	}
-
-
-	/**
-	 * @return the retireMoney
-	 */
-	public String getRetireMoney() {
-		return retireMoney;
-	}
-
-
-	/**
-	 * @param retireMoney the retireMoney to set
-	 */
-	public void setRetireMoney(String retireMoney) {
-		this.retireMoney = retireMoney;
-	}
-
-
-	/**
-	 * @return the armyMoney
-	 */
-	public String getArmyMoney() {
-		return armyMoney;
-	}
-
-
-	/**
-	 * @param armyMoney the armyMoney to set
-	 */
-	public void setArmyMoney(String armyMoney) {
-		this.armyMoney = armyMoney;
-	}
-
-
-	/**
-	 * @return the specialMoney
-	 */
-	public String getSpecialMoney() {
-		return specialMoney;
-	}
-
-
-	/**
-	 * @param specialMoney the specialMoney to set
-	 */
-	public void setSpecialMoney(String specialMoney) {
-		this.specialMoney = specialMoney;
-	}
-
-
-	/**
-	 * @return the newRuralMoney
-	 */
-	public String getNewRuralMoney() {
-		return newRuralMoney;
-	}
-
-
-	/**
-	 * @param newRuralMoney the newRuralMoney to set
-	 */
-	public void setNewRuralMoney(String newRuralMoney) {
-		this.newRuralMoney = newRuralMoney;
-	}
-
 
 	/**
 	 * @return the bigPayMoney
