@@ -9,8 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.athene.sybxjr.domain.Prescription;
 import com.athene.sybxjr.domain.QueryForm;
+import com.athene.sybxjr.domain.yskp.Prescription;
 import com.athene.sybxjr.repository.PrescriptionRepository;
 
 /**

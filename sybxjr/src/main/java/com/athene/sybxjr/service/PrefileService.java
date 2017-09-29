@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import com.athene.sybxjr.domain.Diagnosis;
-import com.athene.sybxjr.domain.Prefile;
 import com.athene.sybxjr.domain.QueryForm;
+import com.athene.sybxjr.domain.yskp.Diagnosis;
+import com.athene.sybxjr.domain.yskp.Prefile;
 import com.athene.sybxjr.repository.DiagnosisRepository;
 import com.athene.sybxjr.repository.PrefileRepository;
 

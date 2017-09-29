@@ -11,7 +11,7 @@ import org.springframework.test.annotation.Commit;
 
 import com.alibaba.fastjson.JSON;
 import com.athene.sybxjr.AbstractTests;
-import com.athene.sybxjr.domain.Prefile;
+import com.athene.sybxjr.domain.yskp.Prefile;
 
 public class PrefileRepositoryTest extends AbstractTests {
 

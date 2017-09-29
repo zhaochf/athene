@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.athene.sybxjr.domain.Medicare;
 import com.athene.sybxjr.domain.QueryForm;
-import com.athene.sybxjr.domain.Settle;
+import com.athene.sybxjr.domain.yskp.Medicare;
+import com.athene.sybxjr.domain.yskp.Settle;
 import com.athene.sybxjr.repository.MedicareRepository;
 import com.athene.sybxjr.repository.SettleRepository;
 

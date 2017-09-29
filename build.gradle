@@ -243,6 +243,7 @@ project("sybxjr") {
 		compile(project(":athene-data"))
 		compile("org.springframework.boot:spring-boot-starter-web")
 		compile("com.microsoft.sqlserver:mssql-jdbc")
+		compile("com.oracle:ojdbc14:10.2.0.4.0")
 	}
 }
 
