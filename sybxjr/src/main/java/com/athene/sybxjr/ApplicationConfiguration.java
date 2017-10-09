@@ -25,6 +25,7 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.util.StringUtils;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.athene.sybxjr.security.MessageProcessor;
@@ -64,10 +65,16 @@ public class ApplicationConfiguration {
 		dataSource.setMaxWait(jdbcConfigurations.getMaxWait());
 		dataSource.setTimeBetweenEvictionRunsMillis(jdbcConfigurations.getTimeBetweenEvictionRunsMillis());
 		dataSource.setMinEvictableIdleTimeMillis(jdbcConfigurations.getMinEvictableIdleTimeMillis());
+		dataSource.setValidationQuery(jdbcConfigurations.getValidationQuery());
+		dataSource.setTestWhileIdle(jdbcConfigurations.isTestWhileIdle());
 		
 		try {
-			dataSource.addFilters(jdbcConfigurations.getFilters());
-			dataSource.setConnectionProperties(jdbcConfigurations.getConnectionProperties());
+			if (!StringUtils.isEmpty(jdbcConfigurations.getFilters())) {
+				dataSource.setFilters(jdbcConfigurations.getFilters());
+			}
+			if (!StringUtils.isEmpty(jdbcConfigurations.getConnectionProperties())) {
+				dataSource.setConnectionProperties(jdbcConfigurations.getConnectionProperties());
+			}
 		} catch (SQLException e) {
 			LOGGER.error(e.getMessage());
 		}
@@ -148,6 +155,12 @@ public class ApplicationConfiguration {
 		@Value("${jdbc.minEvictableIdleTimeMillis}")
 		private int minEvictableIdleTimeMillis;
 		
+		@Value("${jdbc.validationQuery}")
+		private String validationQuery;
+		
+		@Value("${jdbc.testWhileIdle}")
+		private boolean testWhileIdle;
+		
 		@Value("${jdbc.filters}")
 		private String filters;
 		
@@ -222,9 +235,38 @@ public class ApplicationConfiguration {
 		}
 
 		/**
+		 * @return the validationQuery
+		 */
+		public String getValidationQuery() {
+			return validationQuery;
+		}
+
+		/**
+		 * @param validationQuery the validationQuery to set
+		 */
+		public void setValidationQuery(String validationQuery) {
+			this.validationQuery = validationQuery;
+		}
+
+		/**
+		 * @return the testWhileIdle
+		 */
+		public boolean isTestWhileIdle() {
+			return testWhileIdle;
+		}
+
+		/**
+		 * @param testWhileIdle the testWhileIdle to set
+		 */
+		public void setTestWhileIdle(boolean testWhileIdle) {
+			this.testWhileIdle = testWhileIdle;
+		}
+
+		/**
 		 * @return the filters
 		 */
 		public String getFilters() {
+			LOGGER.debug("The druid filters is: " + this.filters);
 			return filters;
 		}
 
@@ -232,6 +274,7 @@ public class ApplicationConfiguration {
 		 * @return the connectionProperties
 		 */
 		public String getConnectionProperties() {
+			LOGGER.debug("The druid connection properties is: " + this.connectionProperties);
 			return connectionProperties;
 		}
 
