@@ -64,8 +64,10 @@ public class ApplicationConfiguration {
 		dataSource.setMaxWait(jdbcConfigurations.getMaxWait());
 		dataSource.setTimeBetweenEvictionRunsMillis(jdbcConfigurations.getTimeBetweenEvictionRunsMillis());
 		dataSource.setMinEvictableIdleTimeMillis(jdbcConfigurations.getMinEvictableIdleTimeMillis());
+		
 		try {
 			dataSource.addFilters(jdbcConfigurations.getFilters());
+			dataSource.setConnectionProperties(jdbcConfigurations.getConnectionProperties());
 		} catch (SQLException e) {
 			LOGGER.error(e.getMessage());
 		}
@@ -149,6 +151,9 @@ public class ApplicationConfiguration {
 		@Value("${jdbc.filters}")
 		private String filters;
 		
+		@Value("${jdbc.connectionProperties}")
+		private String connectionProperties;
+		
 		public String getDriverClassName() {
 			return driverClassName;
 		}
@@ -221,6 +226,20 @@ public class ApplicationConfiguration {
 		 */
 		public String getFilters() {
 			return filters;
+		}
+
+		/**
+		 * @return the connectionProperties
+		 */
+		public String getConnectionProperties() {
+			return connectionProperties;
+		}
+
+		/**
+		 * @param connectionProperties the connectionProperties to set
+		 */
+		public void setConnectionProperties(String connectionProperties) {
+			this.connectionProperties = connectionProperties;
 		}
 		
 	}
