@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.athene.sybxjr.domain.Disease;
-import com.athene.sybxjr.domain.Operation;
 import com.athene.sybxjr.domain.QueryForm;
-import com.athene.sybxjr.domain.RunCase;
+import com.athene.sybxjr.domain.yskp.Disease;
+import com.athene.sybxjr.domain.yskp.Operation;
+import com.athene.sybxjr.domain.yskp.RunCase;
 import com.athene.sybxjr.repository.DiseaseRepository;
 import com.athene.sybxjr.repository.OperationRepository;
 import com.athene.sybxjr.repository.RunCaseRepository;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.athene.sybxjr.domain;
+package com.athene.sybxjr.domain.yskp;
 
 import java.io.Serializable;
 
@@ -16,7 +16,7 @@ import com.athene.data.domain.AbstractEntity;
  *
  */
 @Entity
-@Table(name = "V_DISEASE")
+@Table(name = "YSKP_DISEASE")
 public class Disease extends AbstractEntity {
 	
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.athene.sybxjr.domain.QueryForm;
-import com.athene.sybxjr.domain.SettleCancel;
+import com.athene.sybxjr.domain.yskp.SettleCancel;
 import com.athene.sybxjr.repository.SettleCancelRepository;
 
 @Service

@@ -1,4 +1,4 @@
-package com.athene.sybxjr.domain;
+package com.athene.sybxjr.domain.yskp;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,7 +11,7 @@ import javax.persistence.Transient;
 import com.athene.data.domain.AbstractEntity;
 
 @Entity
-@Table(name = "V_ASSAYRESULT")
+@Table(name = "YSKP_ASSAYRESULT")
 public class AssayResult extends AbstractEntity {
 
 	/**

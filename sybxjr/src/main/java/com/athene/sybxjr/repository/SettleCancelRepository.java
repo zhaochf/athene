@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.athene.sybxjr.domain.SettleCancel;
+import com.athene.sybxjr.domain.yskp.SettleCancel;
 
 public interface SettleCancelRepository extends JpaRepository<SettleCancel, String> {
 

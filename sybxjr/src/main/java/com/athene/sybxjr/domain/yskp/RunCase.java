@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.athene.sybxjr.domain;
+package com.athene.sybxjr.domain.yskp;
 
 import java.io.Serializable;
 import java.util.List;
@@ -18,7 +18,7 @@ import com.athene.data.domain.AbstractEntity;
  *
  */
 @Entity
-@Table(name = "V_RUNCASE")
+@Table(name = "YSKP_RUNCASE")
 public class RunCase extends AbstractEntity {
 	
 	/**

@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.athene.sybxjr.domain.AssayResult;
 import com.athene.sybxjr.domain.QueryForm;
 import com.athene.sybxjr.domain.Result;
-import com.athene.sybxjr.domain.RunCase;
-import com.athene.sybxjr.domain.SettleCancel;
+import com.athene.sybxjr.domain.yskp.AssayResult;
 import com.athene.sybxjr.domain.yskp.Prefile;
 import com.athene.sybxjr.domain.yskp.Prescription;
+import com.athene.sybxjr.domain.yskp.RunCase;
 import com.athene.sybxjr.domain.yskp.Settle;
+import com.athene.sybxjr.domain.yskp.SettleCancel;
 import com.athene.sybxjr.security.MessageProcessor;
 import com.athene.sybxjr.service.AssayResultService;
 import com.athene.sybxjr.service.PrefileService;

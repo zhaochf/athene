@@ -7,9 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.athene.sybxjr.domain.AssayDetail;
-import com.athene.sybxjr.domain.AssayResult;
 import com.athene.sybxjr.domain.QueryForm;
+import com.athene.sybxjr.domain.yskp.AssayDetail;
+import com.athene.sybxjr.domain.yskp.AssayResult;
 import com.athene.sybxjr.repository.AssayDetailRepository;
 import com.athene.sybxjr.repository.AssayResultRepository;
 
