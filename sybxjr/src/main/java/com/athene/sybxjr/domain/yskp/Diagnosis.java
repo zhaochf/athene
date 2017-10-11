@@ -16,7 +16,7 @@ import com.athene.data.domain.AbstractEntity;
  *
  */
 @Entity
-@Table(name = "YSKP_DIAGNOSISLISTS")
+@Table(name = "YSKP_DIAGNOSIS")
 public class Diagnosis extends AbstractEntity {
 
 	/**

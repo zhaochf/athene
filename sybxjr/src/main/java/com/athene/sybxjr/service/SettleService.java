@@ -17,6 +17,7 @@ public class SettleService {
 	@Autowired
 	private SettleRepository settleRepository;
 	
+	@Autowired
 	private MedicareRepository medicareRepository;
 	
 	public List<Settle> getSettles(QueryForm form) {
