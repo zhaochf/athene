@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.athene.data.domain.AbstractEntity;
 
 /**
@@ -55,12 +56,14 @@ public class Prefile extends AbstractEntity {
 	
 	private String credentialNum;
 	
+	@JSONField(name="IDCard")
 	private String IDCard;
 	
 	private String name;
 	
 	private String gender;
 	
+	@JSONField(name="BOD")
 	private String BOD;
 	
 	private String race;
